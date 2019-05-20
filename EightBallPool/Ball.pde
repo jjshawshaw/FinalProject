@@ -1,4 +1,4 @@
-class Ball extends Thing implements Displayable, Moveable, Collideable{
+class Ball extends Thing implements Displayable, Moveable{
   float dir;
   float speed;
   Ball(float x, float y, float direction, float speed){
@@ -15,6 +15,22 @@ class Ball extends Thing implements Displayable, Moveable, Collideable{
     x += speed * cos(dir);
     y += speed * -sin(dir);
   }
-  boolean isTouching(Thing other){
+  boolean isTouching(Ball other){
     return (dist(x, y, other.x, other.y) <= 20);
+  }
+  void collide(){
+    for (Wall w : Walls){
+      if (w.isTouching(this)){
+        if (w.dir == 0){
+          dir = (PI - dir);
+        }
+        else {
+          dir = 2 * PI - dir;
+        }
+      }
+    } 
+    for (Ball b : Balls){
+      //if (b != this && b.isTouching(this)) speed = 0;
+    } 
+  }
 }

@@ -8,19 +8,31 @@ class Wall extends Thing implements Displayable{
     this.len = len;
   }
   void display(){
-    fill(0);
-    switch(dir){
-      case 0:
+    fill(255);
+    if (dir == 0){
         rect(x, y, len, 30);
-        break;
-      case 1:
+        ellipse(x, y, 10, 10);
+    } else {
+        ellipse(x, y, 10, 10);
         rect(x, y, 30, len);
-        break;
-      case 2:
-        rect(x, y, -len, 30);
-        break;
-      case 3:
-        rect(x, y, 30, -len);
     }
   }
+  boolean isTouching(Ball other){
+    if (dir == 0){
+        if ((x > other.x && x - other.x <= 10 || X < other.x &&  other.x - x <= len) 
+        && (y > other.y && y - other.y <= 10 || y < other.y && other.y - y <= 40)){
+          fill(255, 0, 0);
+          rect(x, y, len, 30);
+          return true;
+        }
+    }
+    if ((y > other.y && y - other.y <= 10 || y < other.y &&  other.y - y <= len) 
+    && (x > other.x && x - other.x <= 10 || x < other.x && other.x - x <= 40)){
+      fill(255, 0, 0);
+      rect(x, y, 30, len);
+      return true;
+    }
+    return false;
+  }
+  
 }
