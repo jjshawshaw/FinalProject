@@ -1,5 +1,6 @@
 ArrayList<Displayable> Displayables;
 ArrayList<Moveable> Moveables;
+ArrayList<Collideable> Collideables;
 ArrayList<Wall> Walls;
 
 void setup(){
@@ -7,10 +8,12 @@ void setup(){
   background(255);
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
+  Collideables = new ArrayList<Collideable>();
   for (int i = 0; i < 5; i++){
-    Ball b = new Ball(random(width), random(height), random(360), 1);
+    Ball b = new Ball(random(width), random(height), random(2 * PI), (float)Math.random());
     Displayables.add(b);
     Moveables.add(b);
+    Collideables.add(b);
   }
   Walls = new ArrayList<Wall>();
   Wall w1 = new Wall(200, 200, 100, 0);

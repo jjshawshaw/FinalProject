@@ -1,4 +1,4 @@
-class Ball extends Thing implements Displayable, Moveable{
+class Ball extends Thing implements Displayable, Moveable, Collideable{
   float dir;
   float speed;
   Ball(float x, float y, float direction, float speed){
@@ -12,7 +12,9 @@ class Ball extends Thing implements Displayable, Moveable{
     ellipse(x, y, 20, 20);
   }
   void move(){
-    x += speed * -sin(dir);
-    y += speed * -cos(dir);
+    x += speed * cos(dir);
+    y += speed * -sin(dir);
   }
+  boolean isTouching(Thing other){
+    return (dist(x, y, other.x, other.y) <= 20);
 }
