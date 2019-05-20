@@ -10,6 +10,8 @@ class Ball extends Thing implements Displayable, Moveable{
   void display(){
     fill(255, 0, 0);
     ellipse(x, y, 20, 20);
+    fill(0);
+    text("" + dir * 180 / PI, x, y);
   }
   void move(){
     x += speed * cos(dir);
@@ -22,10 +24,14 @@ class Ball extends Thing implements Displayable, Moveable{
     for (Wall w : Walls){
       if (w.isTouching(this)){
         if (w.dir == 0){
-          dir = (PI - dir);
+          dir = -dir;
+          move();
         }
         else {
-          dir = 2 * PI - dir;
+          text("" + dir, x, y);
+          dir = -dir;
+          move();
+          speed = 0;
         }
       }
     } 

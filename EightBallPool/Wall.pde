@@ -19,8 +19,8 @@ class Wall extends Thing implements Displayable{
   }
   boolean isTouching(Ball other){
     if (dir == 0){
-        if ((x > other.x && x - other.x <= 10 || X < other.x &&  other.x - x <= len) 
-        && (y > other.y && y - other.y <= 10 || y < other.y && other.y - y <= 40)){
+        if ((x > other.x && x - other.x <= 20 || x < other.x &&  other.x - x <= len) 
+        && (y > other.y && y - other.y <= 20 || y < other.y && other.y - y <= 40)){
           fill(255, 0, 0);
           rect(x, y, len, 30);
           return true;
