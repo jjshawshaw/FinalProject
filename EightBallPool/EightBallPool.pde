@@ -10,7 +10,7 @@ void setup(){
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
   for (int i = 0; i < 5; i++){
-    Ball b = new Ball(random(240) + 130, random(240) + 130, random(2 * PI), .5);
+    Ball b = new Ball(random(240) + 130, random(240) + 130, random(2 * PI), 5);
     Displayables.add(b);
     Moveables.add(b);
     Balls.add(b);

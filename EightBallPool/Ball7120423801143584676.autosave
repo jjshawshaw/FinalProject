@@ -1,24 +1,19 @@
 class Ball extends Thing implements Displayable, Moveable{
   float dir;
   float speed;
-  float xv;
-  float yv;
   Ball(float x, float y, float direction, float speed){
     this.x = x;
     this.y = y;
     this.dir = direction;
-    xv = speed * cos(dir);
-    yv = speed * -sin(dir);
     this.speed = speed;
   }
   void display(){
     fill(255, 0, 0);
     ellipse(x, y, 20, 20);
-    fill(0);
   }
   void move(){
-    x += xv;
-    y += yv;
+    x += speed * cos(dir);
+    y += speed * -sin(dir);
   }
   boolean isTouching(Ball other){
     return (dist(x, y, other.x, other.y) <= 20);
@@ -26,15 +21,11 @@ class Ball extends Thing implements Displayable, Moveable{
   void collide(){
     for (Wall w : Walls){
       if (w.isTouching(this)){
-        if (w.dir == 0){
-          dir = (PI - dir) % TWO_PI;
-          yv *= -1;
-          move();
+        if (w.dir == 1){
+          dir = (PI - dir);
         }
         else {
-          dir = (TWO_PI - dir) % TWO_PI;
-          xv *= -1;
-          move();
+          dir = 2 * PI - dir;
         }
       }
     } 
