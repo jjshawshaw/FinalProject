@@ -1,0 +1,3 @@
+interface Moveable{
+  void move();
+}
