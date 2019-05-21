@@ -51,6 +51,8 @@ class Ball extends Thing implements Displayable, Moveable{
         b.yv = tempy;
         move();
         b.move();
+        xv /= 1.5;
+        yv /= 1.5;
       }
     } 
   }
