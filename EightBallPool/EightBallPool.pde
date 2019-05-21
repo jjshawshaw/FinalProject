@@ -2,6 +2,7 @@ ArrayList<Displayable> Displayables;
 ArrayList<Moveable> Moveables;
 ArrayList<Wall> Walls;
 ArrayList<Ball> Balls;
+static float fU = 1 + 5 * pow(10, -3);
 
 void setup(){
   size(500,500);
@@ -10,7 +11,7 @@ void setup(){
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
   for (int i = 0; i < 5; i++){
-    Ball b = new Ball(random(240) + 130, random(240) + 130, random(2 * PI), 5);
+    Ball b = new Ball(random(240) + 130, random(240) + 130, random(2 * PI), 10);
     Displayables.add(b);
     Moveables.add(b);
     Balls.add(b);

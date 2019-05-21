@@ -14,11 +14,14 @@ class Ball extends Thing implements Displayable, Moveable{
   void display(){
     fill(255, 0, 0);
     ellipse(x, y, 20, 20);
-    fill(0);
   }
   void move(){
     x += xv;
     y += yv;
+    xv /= fU;
+    yv /= fU;
+    if (abs(xv) < 0.1) xv = 0;
+    if (abs(yv) < 0.1) yv = 0;
   }
   boolean isTouching(Ball other){
     return (dist(x, y, other.x, other.y) <= 20);
@@ -39,7 +42,16 @@ class Ball extends Thing implements Displayable, Moveable{
       }
     } 
     for (Ball b : Balls){
-      //if (b != this && b.isTouching(this)) speed = 0;
+      float tempx = xv;
+      float tempy = yv;
+      if (b != this && b.isTouching(this)){
+        xv = b.xv;
+        b.xv = tempx;
+        yv = b.yv;
+        b.yv = tempy;
+        move();
+        b.move();
+      }
     } 
   }
 }
