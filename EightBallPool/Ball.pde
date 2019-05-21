@@ -4,8 +4,8 @@ class Ball extends Thing implements Displayable, Moveable{
   Ball(float x, float y, float xv, float yv){
     this.x = x;
     this.y = y;
-    this.xv = xv
-    this.yv = xv;
+    this.xv = xv;
+    this.yv = yv;
   }
   void display(){
     fill(255, 0, 0);
@@ -45,8 +45,8 @@ class Ball extends Thing implements Displayable, Moveable{
         b.yv = tempy;
         move();
         b.move();
-        xv /= 1.5;
-        yv /= 1.5;
+        xv /= 1.2;
+        yv /= 1.2;
       }
     } 
   }
