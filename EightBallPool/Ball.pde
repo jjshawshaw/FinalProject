@@ -1,15 +1,11 @@
 class Ball extends Thing implements Displayable, Moveable{
-  float dir;
-  float speed;
   float xv;
   float yv;
-  Ball(float x, float y, float direction, float speed){
+  Ball(float x, float y, float xv, float yv){
     this.x = x;
     this.y = y;
-    this.dir = direction;
-    xv = speed * cos(dir);
-    yv = speed * -sin(dir);
-    this.speed = speed;
+    this.xv = xv
+    this.yv = xv;
   }
   void display(){
     fill(255, 0, 0);
@@ -30,12 +26,10 @@ class Ball extends Thing implements Displayable, Moveable{
     for (Wall w : Walls){
       if (w.isTouching(this)){
         if (w.dir == 0){
-          dir = (PI - dir) % TWO_PI;
           yv *= -1;
           move();
         }
         else {
-          dir = (TWO_PI - dir) % TWO_PI;
           xv *= -1;
           move();
         }

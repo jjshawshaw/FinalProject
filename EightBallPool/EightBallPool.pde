@@ -10,12 +10,10 @@ void setup(){
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
-  for (int i = 0; i < 5; i++){
-    Ball b = new Ball(random(240) + 130, random(240) + 130, random(2 * PI), random(10));
-    Displayables.add(b);
-    Moveables.add(b);
-    Balls.add(b);
-  }
+  Ball b = new Ball(255, 255, 0, 0);
+  Displayables.add(b);
+  Moveables.add(b);
+  Balls.add(b);
   Walls = new ArrayList<Wall>();
   Wall w1 = new Wall(100, 100, 330, 0);
   Walls.add(w1);
