@@ -33,6 +33,8 @@ class Ball extends Thing implements Displayable, Moveable{
           xv *= -1;
           move();
         }
+        xv /= 1.1;
+        yv /= 1.1;
       }
     } 
     for (Ball b : Balls){
@@ -56,10 +58,10 @@ class Ball extends Thing implements Displayable, Moveable{
          v2tp.mult(v2t);
          v1np.add(v1tp);
          v2np.add(v2tp);
-         xv = v1np.x;
-         yv = v1np.y;
-         b.xv = v2np.x;
-         b.yv = v2np.y;
+         xv = v1np.x / 1.1;
+         yv = v1np.y / 1.1;
+         b.xv = v2np.x / 1.1;
+         b.yv = v2np.y / 1.1;
          move();
          b.move();
       }

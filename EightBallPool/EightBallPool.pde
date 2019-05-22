@@ -2,7 +2,7 @@ ArrayList<Displayable> Displayables;
 ArrayList<Moveable> Moveables;
 ArrayList<Wall> Walls;
 ArrayList<Ball> Balls;
-static float fU = 1 + 5 * pow(10, -3);
+static float fU = 1 + 7 * pow(10, -3);
 
 void setup(){
   size(500,500);
@@ -22,7 +22,7 @@ void setup(){
   Displayables.add(b3);
   Moveables.add(b3);
   Balls.add(b3);
-  Ball c = new Ball(200, 250, 5, 0);
+  CueBall c = new CueBall(200, 250, 17, 0);
   Displayables.add(c);
   Moveables.add(c);
   Balls.add(c);
