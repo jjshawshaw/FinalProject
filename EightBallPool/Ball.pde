@@ -51,9 +51,9 @@ class Ball extends Thing implements Displayable, Moveable{
          PVector v1tp = new PVector(ut.x, ut.y);
          v1tp.mult(v1t);
          PVector v2np = new PVector(un.x, un.y);
-         v1np.mult(v1n);
+         v2np.mult(v1n);
          PVector v2tp = new PVector(ut.x, ut.y);
-         v1tp.mult(v2t);
+         v2tp.mult(v2t);
          v1np.add(v1tp);
          v2np.add(v2tp);
          xv = v1np.x;
