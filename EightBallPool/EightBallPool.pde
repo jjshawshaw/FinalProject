@@ -22,7 +22,7 @@ void setup(){
   Displayables.add(b3);
   Moveables.add(b3);
   Balls.add(b3);
-  CueBall c = new CueBall(200, 250, 17, 0);
+  CueBall c = new CueBall(200, 250, 0, 0);
   Displayables.add(c);
   Moveables.add(c);
   Balls.add(c);
@@ -39,6 +39,9 @@ void setup(){
   Wall w4 = new Wall(400, 100, 330, 1);
   Walls.add(w4);
   Displayables.add(w4);
+  Stick s = new Stick(c);
+  Moveables.add(s);
+  Displayables.add(s);
 }
 
 void draw(){
