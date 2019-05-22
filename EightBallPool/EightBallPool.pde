@@ -39,6 +39,9 @@ void setup(){
   Wall w4 = new Wall(400, 100, 330, 1);
   Walls.add(w4);
   Displayables.add(w4);
+  Stick s = new Stick(250, 250);
+  Moveables.add(s);
+  Displayables.add(s);
 }
 
 void draw(){

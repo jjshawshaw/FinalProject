@@ -1,4 +1,4 @@
-public class CueBall extends Ball{
+class CueBall extends Ball{
   CueBall(float x, float y, float xv, float yv){
     super(x, y, xv, yv);
   }
