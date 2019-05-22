@@ -10,22 +10,27 @@ void setup(){
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
-  Ball b1 = new Ball(300, 250, 0, 0);
-  Displayables.add(b1);
-  Moveables.add(b1);
-  Balls.add(b1);
-  Ball b2 = new Ball(320, 265, 0, 0);
-  Displayables.add(b2);
-  Moveables.add(b2);
-  Balls.add(b2);
-  Ball b3 = new Ball(320, 235, 0, 0);
-  Displayables.add(b3);
-  Moveables.add(b3);
-  Balls.add(b3);
-  CueBall c = new CueBall(200, 250, 0, 0);
+  
+  CueBall c = new CueBall(200, 250, 0, 0, 0);
   Displayables.add(c);
   Moveables.add(c);
   Balls.add(c);
+  
+  Ball b1 = new Ball(300, 250, 0, 0, 1);
+  Displayables.add(b1);
+  Moveables.add(b1);
+  Balls.add(b1);
+  
+  Ball b2 = new Ball(320, 265, 0, 0, 2);
+  Displayables.add(b2);
+  Moveables.add(b2);
+  Balls.add(b2);
+  
+  Ball b3 = new Ball(320, 235, 0, 0, 3);
+  Displayables.add(b3);
+  Moveables.add(b3);
+  Balls.add(b3);
+  
   Walls = new ArrayList<Wall>();
   Wall w1 = new Wall(100, 100, 330, 0);
   Walls.add(w1);
@@ -39,6 +44,7 @@ void setup(){
   Wall w4 = new Wall(400, 100, 330, 1);
   Walls.add(w4);
   Displayables.add(w4);
+  
   Stick s = new Stick(c);
   Moveables.add(s);
   Displayables.add(s);
@@ -46,12 +52,12 @@ void setup(){
 
 void draw(){
   background(255);
-  /*for (Displayable d : Displayables){
-    d.display("1");
-  }*/
-  for (int i = 0; i < Displayables.size(); i++){
-    Displayables.get(i).display("" + (i+1));
+  for (Displayable d : Displayables){
+    d.display();
   }
+  /*for (int i = 0; i < Displayables.size(); i++){
+    Displayables.get(i).display("" + i);
+  }*/
   for (Moveable m : Moveables){
     m.move();
   }

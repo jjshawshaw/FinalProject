@@ -37,4 +37,16 @@ class Stick extends Thing implements Displayable, Moveable {
       popMatrix();
     }
   }
+  void display(String file){
+    if (cBall.xv == 0 && cBall.yv == 0){
+      pushMatrix();
+      translate(cBall.x, cBall.y);
+      rotate(cVect.heading());
+      fill(160, 42, 42);
+      rect(20, -3.5, 200, 7);
+      fill(255);
+      rect(20, -3.5, 7, 7);
+      popMatrix();
+    }
+  }
 }
