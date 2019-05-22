@@ -2,17 +2,35 @@ class Ball extends Thing implements Displayable, Moveable{
   float xv;
   float yv;
   int id;
+  int a,b,c;
   Ball(float x, float y, float xv, float yv, int num){
     this.x = x;
     this.y = y;
     this.xv = xv;
     this.yv = yv;
     this.id = num;
+    setColor();
+  }
+  void setColor(){
+    if (id == 1){
+      a = 250;
+      b = 250;
+      c = 0;
+    }
+    else{
+      a = 255;
+      b = 255;
+      c = 255;
+    }
   }
   void display(){
-    fill(255,255,255);
+    fill(a,b,c);
     ellipse(x, y, 20, 20);
-    fill(255, 0, 0);
+    fill(255, 255, 255);
+    stroke(255,255,255);
+    ellipse(x, y, 10, 10);
+    fill(0, 0, 0);
+    stroke(0,0,0);
     text(id+"", x-4, y+5);
   }
   void display(String file){
