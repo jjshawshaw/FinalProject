@@ -11,9 +11,7 @@ class Wall extends Thing implements Displayable{
     fill(255);
     if (dir == 0){
         rect(x, y, len, 30);
-        ellipse(x, y, 10, 10);
     } else {
-        ellipse(x, y, 10, 10);
         rect(x, y, 30, len);
     }
   }
