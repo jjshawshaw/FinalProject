@@ -11,6 +11,13 @@ class Ball extends Thing implements Displayable, Moveable{
     fill(255, 0, 0);
     ellipse(x, y, 20, 20);
   }
+  void display(String file){
+    //image(ball1, x, y, 20, 20);
+    fill(255,255,255);
+    ellipse(x, y, 20, 20);
+    fill(255, 0, 0);
+    text(file, x-4, y+5);
+  }
   void move(){
     x += xv;
     y += yv;

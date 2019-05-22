@@ -43,8 +43,11 @@ void setup(){
 
 void draw(){
   background(255);
-  for (Displayable d : Displayables){
-    d.display();
+  /*for (Displayable d : Displayables){
+    d.display("1");
+  }*/
+  for (int i = 0; i < Displayables.size(); i++){
+    Displayables.get(i).display("" + (i+1));
   }
   for (Moveable m : Moveables){
     m.move();
