@@ -2,7 +2,8 @@ ArrayList<Displayable> Displayables;
 ArrayList<Moveable> Moveables;
 ArrayList<Wall> Walls;
 ArrayList<Ball> Balls;
-ArrayList<Hole> gone;
+ArrayList<Hole> hole;
+ArrayList<Ball> removed;
 static float fU = 1 + 7 * pow(10, -3);
 
 void setup(){
@@ -11,6 +12,7 @@ void setup(){
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
+  removed = new ArrayList<Ball>();
   
   Ball b1 = new Ball(300, 250, 0, 0, 1);
   Displayables.add(b1);
@@ -71,9 +73,9 @@ void setup(){
   Walls.add(w4);
   Displayables.add(w4);
   
-  gone = new ArrayList<Hole>();
+  hole = new ArrayList<Hole>();
   Hole h1 = new Hole(140, 140);
-  gone.add(h1);
+  hole.add(h1);
   Displayables.add(h1);
   
   Stick s = new Stick(c);

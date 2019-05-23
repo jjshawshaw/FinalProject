@@ -131,11 +131,12 @@ class Ball extends Thing implements Displayable, Moveable{
          b.move();
       }
     }
-    for (Hole h : gone){
+    for (Hole h : hole){
       if (h.isTouching(this)){
         Balls.remove(this);
         Displayables.remove(this);
         Moveables.remove(this);
+        removed.add(this);
       }
     }
   }
