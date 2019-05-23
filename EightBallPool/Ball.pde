@@ -101,7 +101,7 @@ class Ball extends Thing implements Displayable, Moveable{
         xv /= 1.1;
         yv /= 1.1;
       }
-    } 
+    }
     for (Ball b : Balls){
       if (b != this && b.isTouching(this)){
          PVector un = new PVector(b.x - x, b.y - y);
@@ -130,6 +130,13 @@ class Ball extends Thing implements Displayable, Moveable{
          move();
          b.move();
       }
-    } 
+    }
+    for (Hole h : gone){
+      if (h.isTouching(this)){
+        Balls.remove(this);
+        Displayables.remove(this);
+        Moveables.remove(this);
+      }
+    }
   }
 }

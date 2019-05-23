@@ -2,6 +2,7 @@ ArrayList<Displayable> Displayables;
 ArrayList<Moveable> Moveables;
 ArrayList<Wall> Walls;
 ArrayList<Ball> Balls;
+ArrayList<Hole> gone;
 static float fU = 1 + 7 * pow(10, -3);
 
 void setup(){
@@ -10,11 +11,6 @@ void setup(){
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
-  
-  CueBall c = new CueBall(200, 250, 0, 0, 0);
-  Displayables.add(c);
-  Moveables.add(c);
-  Balls.add(c);
   
   Ball b1 = new Ball(300, 250, 0, 0, 1);
   Displayables.add(b1);
@@ -56,6 +52,11 @@ void setup(){
   Moveables.add(b8);
   Balls.add(b8);
   
+  CueBall c = new CueBall(200, 250, 0, 0, 0);
+  Displayables.add(c);
+  Moveables.add(c);
+  Balls.add(c);
+  
   Walls = new ArrayList<Wall>();
   Wall w1 = new Wall(100, 100, 330, 0);
   Walls.add(w1);
@@ -69,6 +70,11 @@ void setup(){
   Wall w4 = new Wall(400, 100, 330, 1);
   Walls.add(w4);
   Displayables.add(w4);
+  
+  gone = new ArrayList<Hole>();
+  Hole h1 = new Hole(140, 140);
+  gone.add(h1);
+  Displayables.add(h1);
   
   Stick s = new Stick(c);
   Moveables.add(s);
@@ -86,7 +92,10 @@ void draw(){
   for (Moveable m : Moveables){
     m.move();
   }
-  for (Ball b : Balls){
+  /*for (Ball b : Balls){
     b.collide();
+  }*/
+  for (int i = Balls.size()-1; i >= 0 ; i--){
+    Balls.get(i).collide();
   }
 }
