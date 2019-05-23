@@ -32,6 +32,26 @@ class Ball extends Thing implements Displayable, Moveable{
       b = 12;
       c = 181;
     }
+    else if (id == 5){
+      a = 255;
+      b = 100;
+      c = 17;
+    }
+    else if (id == 6){
+      a = 43;
+      b = 229;
+      c = 36;
+    }
+    else if (id == 7){
+      a = 102;
+      b = 74;
+      c = 22;
+    }
+    else if (id == 8){
+      a = 0;
+      b = 0;
+      c = 0;
+    }
     else{
       a = 255;
       b = 255;
