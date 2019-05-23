@@ -31,6 +31,31 @@ void setup(){
   Moveables.add(b3);
   Balls.add(b3);
   
+  Ball b4 = new Ball(340, 280, 0, 0, 4);
+  Displayables.add(b4);
+  Moveables.add(b4);
+  Balls.add(b4);
+  
+  Ball b5 = new Ball(340, 255, 0, 0, 5);
+  Displayables.add(b5);
+  Moveables.add(b5);
+  Balls.add(b5);
+  
+  Ball b6 = new Ball(340, 230, 0, 0, 6);
+  Displayables.add(b6);
+  Moveables.add(b6);
+  Balls.add(b6);
+  
+  Ball b7 = new Ball(360, 300, 0, 0, 7);
+  Displayables.add(b7);
+  Moveables.add(b7);
+  Balls.add(b7);
+  
+  Ball b8 = new Ball(360, 273, 0, 0, 8);
+  Displayables.add(b8);
+  Moveables.add(b8);
+  Balls.add(b8);
+  
   Walls = new ArrayList<Wall>();
   Wall w1 = new Wall(100, 100, 330, 0);
   Walls.add(w1);

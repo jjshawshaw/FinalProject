@@ -17,6 +17,21 @@ class Ball extends Thing implements Displayable, Moveable{
       b = 250;
       c = 0;
     }
+    else if (id == 2){
+      a = 4;
+      b = 127;
+      c = 249;
+    }
+    else if (id == 3){
+      a = 250;
+      b = 25;
+      c = 4;
+    }
+    else if (id == 4){
+      a = 138;
+      b = 12;
+      c = 181;
+    }
     else{
       a = 255;
       b = 255;
@@ -31,7 +46,8 @@ class Ball extends Thing implements Displayable, Moveable{
     ellipse(x, y, 10, 10);
     fill(0, 0, 0);
     stroke(0,0,0);
-    text(id+"", x-4, y+5);
+    textSize(10);
+    text(id+"", x-3, y+4);
   }
   void display(String file){
     //image(ball1, x, y, 20, 20);
