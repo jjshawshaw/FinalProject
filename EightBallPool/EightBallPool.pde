@@ -14,57 +14,82 @@ void setup(){
   Balls = new ArrayList<Ball>();
   removed = new ArrayList<Ball>();
   
-  Ball b1 = new Ball(300, 350, 0, 0, 1);
+  Ball b1 = new Ball(600, 350, 0, 0, 1);
   Displayables.add(b1);
   Moveables.add(b1);
   Balls.add(b1);
   
-  Ball b2 = new Ball(320, 365, 0, 0, 2);
+  Ball b2 = new Ball(615, 365, 0, 0, 2);
   Displayables.add(b2);
   Moveables.add(b2);
   Balls.add(b2);
   
-  Ball b3 = new Ball(320, 335, 0, 0, 3);
+  Ball b3 = new Ball(615, 335, 0, 0, 3);
   Displayables.add(b3);
   Moveables.add(b3);
   Balls.add(b3);
   
-  Ball b4 = new Ball(340, 380, 0, 0, 4);
+  Ball b4 = new Ball(630, 380, 0, 0, 4);
   Displayables.add(b4);
   Moveables.add(b4);
   Balls.add(b4);
   
-  Ball b5 = new Ball(340, 355, 0, 0, 5);
+  Ball b5 = new Ball(630, 350, 0, 0, 5);
   Displayables.add(b5);
   Moveables.add(b5);
   Balls.add(b5);
   
-  Ball b6 = new Ball(340, 330, 0, 0, 6);
+  Ball b6 = new Ball(630, 320, 0, 0, 6);
   Displayables.add(b6);
   Moveables.add(b6);
   Balls.add(b6);
   
-  Ball b7 = new Ball(360, 400, 0, 0, 7);
+  Ball b7 = new Ball(645, 335, 0, 0, 7);
   Displayables.add(b7);
   Moveables.add(b7);
   Balls.add(b7);
   
-  Ball b8 = new Ball(360, 373, 0, 0, 8);
+  Ball b8 = new Ball(645, 365, 0, 0, 8);
   Displayables.add(b8);
   Moveables.add(b8);
   Balls.add(b8);
   
-  Ball b9 = new Ball(360, 453, 0, 0, 9);
+  Ball b9 = new Ball(645, 395, 0, 0, 9);
   Displayables.add(b9);
   Moveables.add(b9);
   Balls.add(b9);
   
-  Ball b10 = new Ball(360, 425, 0, 0, 10);
+  Ball b10 = new Ball(645, 305, 0, 0, 10);
   Displayables.add(b10);
   Moveables.add(b10);
   Balls.add(b10);
   
-  CueBall c = new CueBall(200, 350, 0, 0, 0);
+  Ball b11 = new Ball(660, 350, 0, 0, 11);
+  Displayables.add(b11);
+  Moveables.add(b11);
+  Balls.add(b11);
+  
+  Ball b12 = new Ball(660, 320, 0, 0, 12);
+  Displayables.add(b12);
+  Moveables.add(b12);
+  Balls.add(b12);
+  
+  Ball b13 = new Ball(660, 380, 0, 0, 13);
+  Displayables.add(b13);
+  Moveables.add(b13);
+  Balls.add(b13);
+  
+  Ball b14 = new Ball(660, 410, 0, 0, 14);
+  Displayables.add(b14);
+  Moveables.add(b14);
+  Balls.add(b14);
+  
+  Ball b15 = new Ball(660, 290, 0, 0, 15);
+  Displayables.add(b15);
+  Moveables.add(b15);
+  Balls.add(b15);
+  
+  CueBall c = new CueBall(250, 350, 0, 0, 0);
   Displayables.add(c);
   Moveables.add(c);
   Balls.add(c);

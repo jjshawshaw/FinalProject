@@ -124,9 +124,11 @@ class Ball extends Thing implements Displayable, Moveable {
         yv = v1np.y / 1.3;
         b.xv = v2np.x / 1.3;
         b.yv = v2np.y / 1.3;
-        while (isTouching(b)) {
+        for (int i = 0; i < 1000; i++) {
+          if (isTouching(b)){
           move();
           b.move();
+          }
         }
       }
     }
