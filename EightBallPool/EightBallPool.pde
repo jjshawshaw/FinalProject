@@ -95,6 +95,7 @@ void setup(){
 
 void draw(){
   background(255);
+  noStroke();
   fill(100, 150, 100);
   rect(50, 50, 800, 400);
   for (Displayable d : Displayables){
