@@ -9,7 +9,7 @@ class Stick extends Thing implements Displayable, Moveable {
     this.dir = 0;
     cBall = c;
     cVect = new PVector(x - cBall.x, y - cBall.y);
-    cVect.limit(200);
+    cVect.limit(300);
     firing = false;
   }
   void move() {
@@ -20,8 +20,8 @@ class Stick extends Thing implements Displayable, Moveable {
     if (!firing && mousePressed && cBall.xv == 0 && cBall.yv == 0) firing = true;
     else if (firing && !mousePressed) {
       firing = false;
-      cBall.xv = -cVect.x / 10;
-      cBall.yv = -cVect.y / 10;
+      cBall.xv = -(cVect.x) / 5;
+      cBall.yv = -(cVect.y) / 5;
     }
   }
   
