@@ -1,18 +1,33 @@
 class Wall extends Thing implements Displayable{
   int dir;
   float len;
-  Wall(float x, float y, float len, int dir){
+  float dir2;
+  Wall(float x, float y, float len, int dir, int dir2){
     this.x = x;
     this.y = y;
     this.dir = dir;
     this.len = len;
+    this.dir2 = dir2;
   }
   void display(){
-    fill(255);
+    fill(50);
     if (dir == 0){
         rect(x, y, len, 30);
+        fill(100, 150, 100);
+        if (dir2 == 0){
+          rect(x, y, len, 10);
+        } else {
+          rect(x, y + 20, len, 10);
+        }
     } else {
         rect(x, y, 30, len);
+        fill(100, 150, 100);
+        fill(100, 150, 100);
+        if (dir2 == 0){
+          rect(x, y, 10, len);
+        } else {
+          rect(x + 20, y, 10, len);
+        }
     }
   }
   void display(String file){

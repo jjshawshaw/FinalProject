@@ -70,16 +70,16 @@ void setup(){
   Balls.add(c);
   
   Walls = new ArrayList<Wall>();
-  Wall w1 = new Wall(50, 50, 800, 0);
+  Wall w1 = new Wall(50, 50, 800, 0, 1);
   Walls.add(w1);
   Displayables.add(w1);
-  Wall w3 = new Wall(50, 420, 800, 0);
+  Wall w3 = new Wall(50, 420, 800, 0, 0);
   Walls.add(w3);
   Displayables.add(w3);
-  Wall w2 = new Wall(50, 50, 400, 1);
+  Wall w2 = new Wall(50, 50, 400, 1, 1);
   Walls.add(w2);
   Displayables.add(w2);
-  Wall w4 = new Wall(825, 50, 400, 1);
+  Wall w4 = new Wall(825, 50, 400, 1, 0);
   Walls.add(w4);
   Displayables.add(w4);
   
@@ -95,6 +95,8 @@ void setup(){
 
 void draw(){
   background(255);
+  fill(100, 150, 100);
+  rect(50, 50, 800, 400);
   for (Displayable d : Displayables){
     d.display();
   }
