@@ -12,31 +12,31 @@ class Ball extends Thing implements Displayable, Moveable {
     setColor();
   }
   void setColor() {
-    if (id == 1) {
+    if (id == 1 || id == 9) {
       a = 250;
       b = 250;
       c = 0;
-    } else if (id == 2) {
+    } else if (id == 2 || id == 10) {
       a = 4;
       b = 127;
       c = 249;
-    } else if (id == 3) {
+    } else if (id == 3 || id == 11) {
       a = 250;
       b = 25;
       c = 4;
-    } else if (id == 4) {
+    } else if (id == 4 || id == 12) {
       a = 138;
       b = 12;
       c = 181;
-    } else if (id == 5) {
+    } else if (id == 5 || id == 13) {
       a = 255;
       b = 100;
       c = 17;
-    } else if (id == 6) {
+    } else if (id == 6 || id == 14) {
       a = 43;
       b = 229;
       c = 36;
-    } else if (id == 7) {
+    } else if (id == 7 || id == 15) {
       a = 102;
       b = 74;
       c = 22;
@@ -56,10 +56,16 @@ class Ball extends Thing implements Displayable, Moveable {
     fill(255, 255, 255);
     stroke(255, 255, 255);
     ellipse(x, y, 10, 10);
+    if (id > 8){
+      fill(255);
+      arc(x, y, 18, 18, 0, PI/2, CHORD);
+      arc(x, y, 18, 18, PI, 1.5 * PI, CHORD);
+    }
     fill(0, 0, 0);
     stroke(0, 0, 0);
     textSize(10);
-    text(id+"", x-3, y+4);
+    if (id <= 9) text(id+"", x-3, y+4);
+    else text(id+"", x- 7, y+4);
   }
   void display(String file) {
     //image(ball1, x, y, 20, 20);

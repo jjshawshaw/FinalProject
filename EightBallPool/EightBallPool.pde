@@ -54,6 +54,16 @@ void setup(){
   Moveables.add(b8);
   Balls.add(b8);
   
+  Ball b9 = new Ball(360, 353, 0, 0, 9);
+  Displayables.add(b9);
+  Moveables.add(b9);
+  Balls.add(b9);
+  
+  Ball b10 = new Ball(360, 325, 0, 0, 10);
+  Displayables.add(b10);
+  Moveables.add(b10);
+  Balls.add(b10);
+  
   CueBall c = new CueBall(200, 250, 0, 0, 0);
   Displayables.add(c);
   Moveables.add(c);
