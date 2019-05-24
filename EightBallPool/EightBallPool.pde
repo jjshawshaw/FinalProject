@@ -7,7 +7,7 @@ ArrayList<Ball> removed;
 static float fU = 1 + 7 * pow(10, -3);
 
 void setup(){
-  size(500,500);
+  size(900,500);
   background(255);
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
@@ -70,21 +70,21 @@ void setup(){
   Balls.add(c);
   
   Walls = new ArrayList<Wall>();
-  Wall w1 = new Wall(100, 100, 330, 0);
+  Wall w1 = new Wall(50, 50, 800, 0);
   Walls.add(w1);
   Displayables.add(w1);
-  Wall w2 = new Wall(100, 100, 300, 1);
-  Walls.add(w2);
-  Displayables.add(w2);
-  Wall w3 = new Wall(100, 400, 300, 0);
+  Wall w3 = new Wall(50, 420, 800, 0);
   Walls.add(w3);
   Displayables.add(w3);
-  Wall w4 = new Wall(400, 100, 330, 1);
+  Wall w2 = new Wall(50, 50, 400, 1);
+  Walls.add(w2);
+  Displayables.add(w2);
+  Wall w4 = new Wall(825, 50, 400, 1);
   Walls.add(w4);
   Displayables.add(w4);
   
   hole = new ArrayList<Hole>();
-  Hole h1 = new Hole(140, 140);
+  Hole h1 = new Hole(90, 90);
   hole.add(h1);
   Displayables.add(h1);
   
