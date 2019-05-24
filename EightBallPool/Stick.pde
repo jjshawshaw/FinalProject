@@ -30,10 +30,12 @@ class Stick extends Thing implements Displayable, Moveable {
       pushMatrix();
       translate(cBall.x, cBall.y);
       rotate(cVect.heading());
-      fill(160, 42, 42);
-      rect(20, -3.5, 200, 7);
+      fill(50, 0, 0);
+      rect(20, -3.5, 300, 7);
       fill(255);
       rect(20, -3.5, 7, 7);
+      fill(0);
+      rect(20, -3.5, 2.5, 7);
       popMatrix();
     }
   }
