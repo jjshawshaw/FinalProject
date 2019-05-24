@@ -52,6 +52,7 @@ class Ball extends Thing implements Displayable, Moveable {
   }
   void display() {
     fill(a, b, c);
+    stroke(0);
     ellipse(x, y, 20, 20);
     fill(255, 255, 255);
     stroke(255, 255, 255);
