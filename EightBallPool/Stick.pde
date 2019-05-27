@@ -3,6 +3,7 @@ class Stick extends Thing implements Displayable, Moveable {
   CueBall cBall;
   PVector cVect;
   boolean firing;
+  float vel;
   public Stick(CueBall c) {
     x = width / 2;
     y = height / 2;
@@ -11,6 +12,7 @@ class Stick extends Thing implements Displayable, Moveable {
     cVect = new PVector(x - cBall.x, y - cBall.y);
     cVect.limit(300);
     firing = false;
+    vel = 0;
   }
   void move() {
     x = mouseX; 
@@ -20,12 +22,20 @@ class Stick extends Thing implements Displayable, Moveable {
     if (!firing && mousePressed && cBall.xv == 0 && cBall.yv == 0) firing = true;
     else if (firing && !mousePressed) {
       firing = false;
-      cBall.xv = -(cVect.x) / 7;
-      cBall.yv = -(cVect.y) / 7;
+      cVect.normalize();
+      cBall.xv = -(cVect.x) * vel;
+      cBall.yv = -(cVect.y) * vel;
+      vel = 0;
+    }
+    else if (firing && mousePressed && !((Math.abs(mouseX - pmouseX) <= .1) && (Math.abs(mouseY - pmouseY) <= .1))){
+      if (vel < 50) vel += 1;
     }
   }
   
+  
   void display() {
+    fill(0);
+    text("cue velocity: " + vel, 50, 50);
     if (cBall.xv == 0 && cBall.yv == 0){
       pushMatrix();
       translate(cBall.x, cBall.y);
