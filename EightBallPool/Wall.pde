@@ -12,24 +12,22 @@ class Wall extends Thing implements Displayable {
   void display() {
     fill(50);
     if (dir == 0) {
-      noStroke();
-      rect(x, y, len, 30);
       stroke(0);
+      rect(x, y, len, 30);
       fill(100, 150, 100);
       if (dir2 == 0) {
-        rect(x + 20, y, len - 40, 10);
+        rect(x, y, len, 10);
       } else {
-        rect(x + 20, y + 20, len - 40, 10);
+        rect(x, y + 20, len, 10);
       }
     } else {
-      noStroke();
-      rect(x, y, 30, len);
       stroke(0);
+      rect(x, y, 30, len);
       fill(100, 150, 100);
       if (dir2 == 0) {
-        rect(x, y + 20, 10, len - 40);
+        rect(x, y, 10, len);
       } else {
-        rect(x + 20, y + 20, 10, len - 40);
+        rect(x + 20, y, 10, len);
       }
     }
   }

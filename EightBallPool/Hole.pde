@@ -10,14 +10,8 @@ class Hole extends Thing implements Displayable{
   void display(String file){
 
   }
-  boolean isTouching(Ball other){
-    if ((y > other.y && y - other.y <= 10 || y < other.y &&  other.y - y <= 20) 
-    && (x > other.x && x - other.x <= 10 || x < other.x && other.x - x <= 40)){
-      fill(255, 0, 0);
-      ellipse(x,y, 20, 20);
-      return true;
-    }
-    return false;
+  boolean isTouching(Ball other) {
+    return (dist(x, y, other.x, other.y) <= 30);
   }
   
 }

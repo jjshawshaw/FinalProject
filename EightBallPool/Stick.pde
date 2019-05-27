@@ -20,8 +20,8 @@ class Stick extends Thing implements Displayable, Moveable {
     if (!firing && mousePressed && cBall.xv == 0 && cBall.yv == 0) firing = true;
     else if (firing && !mousePressed) {
       firing = false;
-      cBall.xv = -(cVect.x) / 5;
-      cBall.yv = -(cVect.y) / 5;
+      cBall.xv = -(cVect.x) / 7;
+      cBall.yv = -(cVect.y) / 7;
     }
   }
   
@@ -37,17 +37,11 @@ class Stick extends Thing implements Displayable, Moveable {
       fill(0);
       rect(20, -3.5, 2.5, 7);
       popMatrix();
-    }
-  }
-  void display(String file){
-    if (cBall.xv == 0 && cBall.yv == 0){
       pushMatrix();
       translate(cBall.x, cBall.y);
       rotate(cVect.heading());
-      fill(160, 42, 42);
-      rect(20, -3.5, 200, 7);
       fill(255);
-      rect(20, -3.5, 7, 7);
+      rect(0, -1.5, -300, 3);
       popMatrix();
     }
   }

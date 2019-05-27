@@ -77,14 +77,14 @@ class Ball extends Thing implements Displayable, Moveable {
   }
   void move() {
     x += xv;
-    y += yv;
+    y += yv; 
     xv /= fU;
     yv /= fU;
     if (abs(xv) < 0.1) xv = 0;
     if (abs(yv) < 0.1) yv = 0;
   }
   boolean isTouching(Ball other) {
-    return (dist(x, y, other.x, other.y) <= 20);
+    return (dist(x, y, other.x, other.y) <= 20.5);
   }
   void collide() {
     for (Wall w : Walls) {
@@ -95,8 +95,8 @@ class Ball extends Thing implements Displayable, Moveable {
           xv *= -1;
         }
         while (w.isTouching(this)) {move();}
-        xv /= 1.1;
-        yv /= 1.1;
+        xv /= 1.2;
+        yv /= 1.2;
       }
     }
     for (Ball b : Balls) {
