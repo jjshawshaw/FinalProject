@@ -19,7 +19,11 @@ class Stick extends Thing implements Displayable, Moveable {
     y = mouseY;
     cVect = new PVector(x - cBall.x, y - cBall.y);
     cVect.limit(200);
-    if (!firing && mousePressed && cBall.xv == 0 && cBall.yv == 0) firing = true;
+    boolean stopped = true;
+    for (Ball b : Balls){
+      if (cBall.xv != 0 && cBall.yv != 0) stopped = false;
+    }
+    if (!firing && mousePressed && stopped) firing = true;
     else if (firing && !mousePressed) {
       firing = false;
       cVect.normalize();
