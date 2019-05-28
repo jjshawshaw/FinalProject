@@ -6,9 +6,11 @@ ArrayList<Hole> hole;
 ArrayList<Ball> removedSolid;
 ArrayList<Ball> removedStripe;
 int turn;
+boolean gaming;
 static float fU = 1 + 8 * pow(10, -3);
 
 void setup() {
+  gaming = true;
   size(900, 600);
   background(255);
   Displayables = new ArrayList<Displayable>();
@@ -143,39 +145,42 @@ void setup() {
 }
 
 void draw() {
-  background(255);
-  fill(100, 150, 100);
-  rect(50, 150, 805, 400);
-  for (Displayable d : Displayables) {
-    d.display();
-  }
-  /*for (int i = 0; i < Displayables.size(); i++){
-   Displayables.get(i).display("" + i);
-   }*/
-  for (Moveable m : Moveables) {
-    m.move();
-  }
+  if (gaming){
+    background(255);
+    fill(100, 150, 100);
+    rect(50, 150, 805, 400);
+    for (Displayable d : Displayables) {
+      d.display();
+    }
+    for (Moveable m : Moveables) {
+      m.move();
+    }
 
-  for (int i = Balls.size()-1; i >= 0; i--) {
-    Balls.get(i).collide();
+    for (int i = Balls.size()-1; i >= 0; i--) {
+      Balls.get(i).collide();
+    }
+ 
+    // display pockets
+    fill(100, 150, 100);
+    stroke(0);
+    rect(437.5, 150, 30, 30);
+    rect(437.5, 520, 30, 30);
+    noStroke();
+    rect(437.5, 150, 30, 31);
+    rect(437.5, 520, 30, 31);
+    stroke(0);
+    fill(0);
+    ellipse(65, 165, 30, 30);
+    ellipse(65, 534, 30, 30);
+    ellipse(452.5, 165, 30, 30);
+    ellipse(452.5, 534, 30, 30);
+    ellipse(839, 165, 30, 30);
+    ellipse(839, 534, 30, 30);
+    }
+  else{
+    textSize(100);
+    text("GAME OVER", 400, 300);
   }
-  
-  // display pockets
-  fill(100, 150, 100);
-  stroke(0);
-  rect(437.5, 150, 30, 30);
-  rect(437.5, 520, 30, 30);
-  noStroke();
-  rect(437.5, 150, 30, 31);
-  rect(437.5, 520, 30, 31);
-  stroke(0);
-  fill(0);
-  ellipse(65, 165, 30, 30);
-  ellipse(65, 534, 30, 30);
-  ellipse(452.5, 165, 30, 30);
-  ellipse(452.5, 534, 30, 30);
-  ellipse(839, 165, 30, 30);
-  ellipse(839, 534, 30, 30);
   
   
 }
