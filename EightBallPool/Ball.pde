@@ -138,8 +138,13 @@ class Ball extends Thing implements Displayable, Moveable {
         //Displayables.remove(this);
         Moveables.remove(this);
         removed.add(this);
-        setX(20 + removed.size()*30);
-        setY(70);
+        if (this.id <= 8){
+          setX(20 + removed.size()*30);
+        }
+        else{
+          setX(300 + removed.size()*30);
+        }
+        setY(80);
       }
     }
   }
