@@ -92,15 +92,20 @@ class Ball extends Thing implements Displayable, Moveable {
         Balls.remove(this);
         //Displayables.remove(this);
         Moveables.remove(this);
-        removed.add(this);
         if (this.id <= 8){
-          setX(20 + removed.size()*30);
+          if (this.id == 8 && removedSolid.size() < 7 && removedStripe.size() < 7){
+            gaming = false;
+          }
+          removedSolid.add(this);
+          setX(20 + id*30);
         }
         else{
-          setX(300 + removed.size()*30);
+          removedStripe.add(this);
+          setX(300 + id*30);
         }
         setY(80);
       }
+    }
     for (Wall w : Walls) {
       if (w.isTouching(this)) {
         if (w.dir == 0) {
@@ -144,25 +149,6 @@ class Ball extends Thing implements Displayable, Moveable {
           b.move();
           }
         }
-      }
-    }
-    for (Hole h : hole) {
-      if (h.isTouching(this)) {
-        Balls.remove(this);
-        //Displayables.remove(this);
-        Moveables.remove(this);
-        if (this.id <= 8){
-          if (this.id == 8 && removedSolid.size() < 7 && removedStripe.size() < 7){
-            gaming = false;
-          }
-          removedSolid.add(this);
-          setX(20 + id*30);
-        }
-        else{
-          removedStripe.add(this);
-          setX(300 + id*30);
-        }
-        setY(80);
       }
     }
   }
