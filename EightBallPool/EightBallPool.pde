@@ -179,7 +179,7 @@ void draw() {
     }
   else{
     textSize(100);
-    text("GAME OVER", 400, 300);
+    text("GAME OVER", 100, 300);
   }
   
   
