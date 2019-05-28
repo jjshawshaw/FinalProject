@@ -115,29 +115,23 @@ void setup() {
   Displayables.add(w4);
 
   hole = new ArrayList<Hole>();
-  Hole h1 = new Hole(65, 165);
+  Hole h1 = new Hole(70, 170);
   hole.add(h1);
-  Displayables.add(h1);
   
-  Hole h2 = new Hole(65, 534);
+  Hole h2 = new Hole(70, 529);
   hole.add(h2);
-  Displayables.add(h2);
   
   Hole h3 = new Hole(452, 165);
   hole.add(h3);
-  Displayables.add(h3);
   
   Hole h4 = new Hole(452, 534);
   hole.add(h4);
-  Displayables.add(h4);
   
-  Hole h5 = new Hole(839, 165);
+  Hole h5 = new Hole(834, 170);
   hole.add(h5);
-  Displayables.add(h5);
   
-  Hole h6 = new Hole(839, 534);
+  Hole h6 = new Hole(834, 529);
   hole.add(h6);
-  Displayables.add(h6);
 
   Stick s = new Stick(c);
   Moveables.add(s);
@@ -181,6 +175,4 @@ void draw() {
     textSize(100);
     text("GAME OVER", 100, 300);
   }
-  
-  
 }

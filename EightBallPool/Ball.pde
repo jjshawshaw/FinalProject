@@ -87,6 +87,20 @@ class Ball extends Thing implements Displayable, Moveable {
     return (dist(x, y, other.x, other.y) <= 20.5);
   }
   void collide() {
+    for (Hole h : hole) {
+      if (h.isTouching(this)) {
+        Balls.remove(this);
+        //Displayables.remove(this);
+        Moveables.remove(this);
+        removed.add(this);
+        if (this.id <= 8){
+          setX(20 + removed.size()*30);
+        }
+        else{
+          setX(300 + removed.size()*30);
+        }
+        setY(80);
+      }
     for (Wall w : Walls) {
       if (w.isTouching(this)) {
         if (w.dir == 0) {
