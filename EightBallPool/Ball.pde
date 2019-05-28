@@ -146,7 +146,21 @@ class Ball extends Thing implements Displayable, Moveable {
         }
       }
     }
-    
+    for (Hole h : hole) {
+      if (h.isTouching(this)) {
+        Balls.remove(this);
+        //Displayables.remove(this);
+        Moveables.remove(this);
+        if (this.id <= 8){
+          removedSolid.add(this);
+          setX(20 + removedSolid.size()*30);
+        }
+        else{
+          removedStripe.add(this);
+          setX(300 + removedStripe.size()*30);
+        }
+        setY(80);
+      }
     }
   }
   
