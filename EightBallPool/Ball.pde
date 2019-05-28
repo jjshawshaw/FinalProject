@@ -135,11 +135,11 @@ class Ball extends Thing implements Displayable, Moveable {
     for (Hole h : hole) {
       if (h.isTouching(this)) {
         Balls.remove(this);
-        setX((int) random(100)+60);
-        setY(70);
         //Displayables.remove(this);
         Moveables.remove(this);
         removed.add(this);
+        setX(20 + removed.size()*30);
+        setY(70);
       }
     }
   }

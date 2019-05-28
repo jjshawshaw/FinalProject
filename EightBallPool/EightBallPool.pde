@@ -4,6 +4,7 @@ ArrayList<Wall> Walls;
 ArrayList<Ball> Balls;
 ArrayList<Hole> hole;
 ArrayList<Ball> removed;
+int turn;
 static float fU = 1 + 8 * pow(10, -3);
 
 void setup() {
@@ -13,6 +14,7 @@ void setup() {
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
   removed = new ArrayList<Ball>();
+  turn = 1;
 
   Ball b1 = new Ball(600, 350, 0, 0, 1);
   Displayables.add(b1);

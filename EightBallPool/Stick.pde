@@ -23,12 +23,17 @@ class Stick extends Thing implements Displayable, Moveable {
     for (Ball b : Balls){
       if (cBall.xv != 0 && cBall.yv != 0) stopped = false;
     }
-    if (!firing && mousePressed && stopped) firing = true;
+    if (!firing && mousePressed && stopped){ 
+    firing = true;
+    }
     else if (firing && !mousePressed) {
       firing = false;
       cVect.normalize();
       cBall.xv = -(cVect.x) * vel;
       cBall.yv = -(cVect.y) * vel;
+      if (vel != 0){
+        turn++;
+      }
       vel = 0;
     }
     else if (firing && mousePressed && !((Math.abs(mouseX - pmouseX) <= .1) && (Math.abs(mouseY - pmouseY) <= .1))){
@@ -40,6 +45,7 @@ class Stick extends Thing implements Displayable, Moveable {
   void display() {
     fill(0);
     text("cue velocity: " + vel, 50, 50);
+    text("Turn: " + turn, 50, 40);
     if (cBall.xv == 0 && cBall.yv == 0){
       pushMatrix();
       translate(cBall.x, cBall.y);
