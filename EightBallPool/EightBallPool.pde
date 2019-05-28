@@ -3,7 +3,8 @@ ArrayList<Moveable> Moveables;
 ArrayList<Wall> Walls;
 ArrayList<Ball> Balls;
 ArrayList<Hole> hole;
-ArrayList<Ball> removed;
+ArrayList<Ball> removedSolid;
+ArrayList<Ball> removedStripe;
 int turn;
 static float fU = 1 + 8 * pow(10, -3);
 
@@ -13,7 +14,8 @@ void setup() {
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
-  removed = new ArrayList<Ball>();
+  removedSolid = new ArrayList<Ball>();
+  removedStripe = new ArrayList<Ball>();
   turn = 1;
 
   Ball b1 = new Ball(600, 350, 0, 0, 1);
