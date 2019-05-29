@@ -10,7 +10,6 @@ class Stick extends Thing implements Displayable, Moveable {
     this.dir = 0;
     cBall = c;
     cVect = new PVector(x - cBall.x, y - cBall.y);
-    cVect.limit(300);
     firing = false;
     vel = 0;
   }
@@ -18,7 +17,6 @@ class Stick extends Thing implements Displayable, Moveable {
     x = mouseX; 
     y = mouseY;
     cVect = new PVector(x - cBall.x, y - cBall.y);
-    cVect.limit(200);
     boolean stopped = true;
     for (Ball b : Balls){
       if (cBall.xv != 0 && cBall.yv != 0) stopped = false;
@@ -36,8 +34,12 @@ class Stick extends Thing implements Displayable, Moveable {
       }
       vel = 0;
     }
-    else if (firing && mousePressed && !((Math.abs(mouseX - pmouseX) <= .1) && (Math.abs(mouseY - pmouseY) <= .1))){
-      if (vel < 50) vel += 1;
+    else if (firing && mousePressed){
+      if (dist(mouseX, mouseY, cBall.x, cBall.y) > dist(pmouseX, pmouseY, cBall.x, cBall.y)){
+        if (vel < 50) vel += .5;
+      } else if (dist(mouseX, mouseY, cBall.x, cBall.y) < dist(pmouseX, pmouseY, cBall.x, cBall.y)){
+        if (vel > 0) vel -= .5;
+      }
     }
   }
   
