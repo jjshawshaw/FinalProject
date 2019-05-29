@@ -86,6 +86,9 @@ class Ball extends Thing implements Displayable, Moveable {
   boolean isTouching(Ball other) {
     return (dist(x, y, other.x, other.y) <= 20.5);
   }
+  boolean isTouching(Stick other) {
+    return (dist(x, y, other.x, other.y) <= 10.25);
+  }
   void collide() {
     for (Hole h : hole) {
       if (h.isTouching(this)) {
