@@ -55,4 +55,19 @@ class Wall extends Thing implements Displayable {
     }
     return false;
   }
+  
+  boolean isTouching(float xCor, float yCor) {
+    if (dir == 0) {
+      if ((x > xCor && x - xCor <= 10 || x < xCor &&  xCor - x <= len) 
+        && (y > yCor && y - yCor <= 10 || y < yCor && yCor - y <= 40)) {
+        return true;
+      }
+      return false;
+    }
+    if ((y > yCor && y - yCor <= 10 || y < yCor &&  yCor - y <= len) 
+      && (x > xCor && x - xCor <= 10 || x < xCor && xCor - x <= 40)) {
+      return true;
+    }
+    return false;
+  }
 }

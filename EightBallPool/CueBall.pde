@@ -5,8 +5,18 @@ class CueBall extends Ball {
   }
   void display() {
     if (inHole){
-      fill(255, 255, 255);
-      ellipse(mouseX, mouseY, 20, 20);
+      float xCor = mouseX;
+      float yCor = mouseY;
+      boolean valid = true;
+      for (Wall w: Walls){
+        if (w.isTouching(xCor, yCor)){
+          valid = false;
+        }
+      }
+      if (valid){
+        fill(255, 255, 255);
+        ellipse(xCor, yCor, 20, 20);
+      }
     }
     else{
       fill(255, 255, 255);
