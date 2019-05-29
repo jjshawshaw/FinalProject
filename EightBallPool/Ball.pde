@@ -154,11 +154,11 @@ class Ball extends Thing implements Displayable, Moveable {
     }
   }
 
-  void setX(int locX) {
+  void setX(float locX) {
     this.x = locX;
   }
 
-  void setY(int locY) {
+  void setY(float locY) {
     this.y = locY;
   }
 }
