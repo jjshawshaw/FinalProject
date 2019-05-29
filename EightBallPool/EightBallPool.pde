@@ -138,6 +138,8 @@ void setup() {
   Stick s = new Stick(c);
   Moveables.add(s);
   Displayables.add(s);
+  Prediction p = new Prediction(s);
+  Displayables.add(p);
 }
 
 void draw() {
