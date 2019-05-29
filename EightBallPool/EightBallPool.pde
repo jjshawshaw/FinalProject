@@ -143,18 +143,7 @@ void draw() {
     background(255);
     fill(100, 150, 100);
     rect(50, 150, 805, 400);
-    for (Displayable d : Displayables) {
-      d.display();
-    }
-    for (Moveable m : Moveables) {
-      m.move();
-    }
-
-    for (int i = Balls.size()-1; i >= 0; i--) {
-      Balls.get(i).collide();
-    }
- 
-    // display pockets
+        // display pockets
     fill(100, 150, 100);
     stroke(0);
     rect(437.5, 150, 30, 30);
@@ -170,6 +159,22 @@ void draw() {
     ellipse(452.5, 534, 30, 30);
     ellipse(839, 165, 30, 30);
     ellipse(839, 534, 30, 30);
+    
+    //display velocity 
+    rect(50, 100, 100, 25);
+    
+    
+    for (Displayable d : Displayables) {
+      d.display();
+    }
+    for (Moveable m : Moveables) {
+      m.move();
+    }
+
+    for (int i = Balls.size()-1; i >= 0; i--) {
+      Balls.get(i).collide();
+    }
+ 
     }
   else{
     textSize(100);

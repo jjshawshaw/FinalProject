@@ -4,6 +4,7 @@ class Stick extends Thing implements Displayable, Moveable {
   PVector cVect;
   boolean firing;
   float vel;
+  boolean stopped;
   public Stick(CueBall c) {
     x = width / 2;
     y = height / 2;
@@ -12,14 +13,15 @@ class Stick extends Thing implements Displayable, Moveable {
     cVect = new PVector(x - cBall.x, y - cBall.y);
     firing = false;
     vel = 0;
+    stopped = true;
   }
   void move() {
     x = mouseX; 
     y = mouseY;
     cVect = new PVector(x - cBall.x, y - cBall.y);
-    boolean stopped = true;
+    stopped = true;
     for (Ball b : Balls){
-      if (cBall.xv != 0 && cBall.yv != 0) stopped = false;
+      if (b.xv != 0 || b.yv != 0) stopped = false;
     }
     if (!firing && mousePressed && stopped){ 
     firing = true;
@@ -38,7 +40,7 @@ class Stick extends Thing implements Displayable, Moveable {
       if (dist(mouseX, mouseY, cBall.x, cBall.y) > dist(pmouseX, pmouseY, cBall.x, cBall.y)){
         if (vel < 50) vel += .5;
       } else if (dist(mouseX, mouseY, cBall.x, cBall.y) < dist(pmouseX, pmouseY, cBall.x, cBall.y)){
-        if (vel > 0) vel -= .5;
+        if (vel > 0) vel -= 5;
       }
     }
   }
@@ -48,7 +50,7 @@ class Stick extends Thing implements Displayable, Moveable {
     fill(0);
     text("cue velocity: " + vel, 50, 50);
     text("Turn: " + turn, 50, 40);
-    if (cBall.xv == 0 && cBall.yv == 0){
+    if (stopped){
       pushMatrix();
       translate(cBall.x, cBall.y);
       rotate(cVect.heading());
