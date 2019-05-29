@@ -1,10 +1,9 @@
-class Hole extends Thing{
-  Hole(float x, float y){
+class Hole extends Thing {
+  Hole(float x, float y) {
     this.x = x;
     this.y = y;
   }
   boolean isTouching(Ball other) {
     return (dist(x, y, other.x, other.y) <= 30);
   }
-  
 }

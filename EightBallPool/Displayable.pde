@@ -1,3 +1,3 @@
-interface Displayable{
+interface Displayable {
   void display();
 }

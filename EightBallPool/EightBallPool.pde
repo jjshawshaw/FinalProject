@@ -104,33 +104,33 @@ void setup() {
   Walls = new ArrayList<Wall>();
   Wall w1 = new Wall(100, 150, 705, 0, 1);
   Walls.add(w1);
-  Displayables.add(w1);
+  //Displayables.add(w1);
   Wall w3 = new Wall(100, 520, 705, 0, 0);
   Walls.add(w3);
-  Displayables.add(w3);
+  //Displayables.add(w3);
   Wall w2 = new Wall(50, 200, 300, 1, 1);
   Walls.add(w2);
-  Displayables.add(w2);
+  //Displayables.add(w2);
   Wall w4 = new Wall(825, 200, 300, 1, 0);
   Walls.add(w4);
-  Displayables.add(w4);
+  //Displayables.add(w4);
 
   hole = new ArrayList<Hole>();
   Hole h1 = new Hole(70, 170);
   hole.add(h1);
-  
+
   Hole h2 = new Hole(70, 529);
   hole.add(h2);
-  
+
   Hole h3 = new Hole(452, 165);
   hole.add(h3);
-  
+
   Hole h4 = new Hole(452, 534);
   hole.add(h4);
-  
+
   Hole h5 = new Hole(834, 170);
   hole.add(h5);
-  
+
   Hole h6 = new Hole(834, 529);
   hole.add(h6);
 
@@ -141,11 +141,17 @@ void setup() {
 }
 
 void draw() {
-  if (gaming){
+  if (gaming) {
+
     background(255);
     fill(100, 150, 100);
     rect(50, 150, 805, 400);
-        // display pockets
+
+    for (Wall w : Walls) {
+      w.display();
+    }
+
+    // display pockets
     fill(100, 150, 100);
     stroke(0);
     rect(437.5, 150, 30, 30);
@@ -161,18 +167,16 @@ void draw() {
     ellipse(452.5, 534, 30, 30);
     ellipse(839, 165, 30, 30);
     ellipse(839, 534, 30, 30);
-    
     //display velocity 
     rect(49, 99, 102, 27);
-    for (int i = 1; i <= 255; i++){
+    for (int i = 1; i <= 255; i++) {
       stroke(255, i, 0);
       line(50 + (i * 100.0 / 255), 100, 50 + (i * 100.0 / 255), 125);
     }
     fill(255);
     stroke(0);
     rect(50 + (vel / 50 * 95), 100, 5, 25);
-    
-    
+
     for (Displayable d : Displayables) {
       d.display();
     }
@@ -183,9 +187,7 @@ void draw() {
     for (int i = Balls.size()-1; i >= 0; i--) {
       Balls.get(i).collide();
     }
- 
-    }
-  else{
+  } else {
     textSize(100);
     text("GAME OVER", 100, 300);
   }

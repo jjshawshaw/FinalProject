@@ -57,7 +57,7 @@ class Ball extends Thing implements Displayable, Moveable {
     fill(255, 255, 255);
     stroke(255, 255, 255);
     ellipse(x, y, 10, 10);
-    if (id > 8){
+    if (id > 8) {
       fill(255);
       arc(x, y, 18, 18, 0, PI/2, CHORD);
       arc(x, y, 18, 18, PI, 1.5 * PI, CHORD);
@@ -92,14 +92,13 @@ class Ball extends Thing implements Displayable, Moveable {
         Balls.remove(this);
         //Displayables.remove(this);
         Moveables.remove(this);
-        if (this.id <= 8){
-          if (this.id == 8 && removedSolid.size() < 7 && removedStripe.size() < 7){
+        if (this.id <= 8) {
+          if (this.id == 8 && removedSolid.size() < 7 && removedStripe.size() < 7) {
             gaming = false;
           }
           removedSolid.add(this);
           setX(20 + id*30);
-        }
-        else{
+        } else {
           removedStripe.add(this);
           setX(300 + id*30);
         }
@@ -113,7 +112,9 @@ class Ball extends Thing implements Displayable, Moveable {
         } else {
           xv *= -1;
         }
-        while (w.isTouching(this)) {move();}
+        while (w.isTouching(this)) {
+          move();
+        }
         xv /= 1.2;
         yv /= 1.2;
       }
@@ -144,21 +145,20 @@ class Ball extends Thing implements Displayable, Moveable {
         b.xv = v2np.x / 1.1;
         b.yv = v2np.y / 1.1;
         for (int i = 0; i < 1000; i++) {
-          if (isTouching(b)){
-          move();
-          b.move();
+          if (isTouching(b)) {
+            move();
+            b.move();
           }
         }
       }
     }
   }
-  
-  void setX(int locX){
+
+  void setX(int locX) {
     this.x = locX;
   }
-  
-  void setY(int locY){
+
+  void setY(int locY) {
     this.y = locY;
   }
-  
 }
