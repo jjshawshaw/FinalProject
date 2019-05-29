@@ -6,6 +6,7 @@ ArrayList<Hole> hole;
 ArrayList<Ball> removedSolid;
 ArrayList<Ball> removedStripe;
 int turn;
+float vel;
 boolean gaming;
 static float fU = 1 + 8 * pow(10, -3);
 
@@ -133,6 +134,7 @@ void setup() {
   Hole h6 = new Hole(834, 529);
   hole.add(h6);
 
+  vel = 0;
   Stick s = new Stick(c);
   Moveables.add(s);
   Displayables.add(s);
@@ -166,6 +168,9 @@ void draw() {
       stroke(255, i, 0);
       line(50 + (i * 100.0 / 255), 100, 50 + (i * 100.0 / 255), 125);
     }
+    fill(255);
+    stroke(0);
+    rect(50 + (vel / 50 * 95), 100, 5, 25);
     
     
     for (Displayable d : Displayables) {

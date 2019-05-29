@@ -3,7 +3,6 @@ class Stick extends Thing implements Displayable, Moveable {
   CueBall cBall;
   PVector cVect;
   boolean firing;
-  float vel;
   boolean stopped;
   public Stick(CueBall c) {
     x = width / 2;
@@ -12,7 +11,6 @@ class Stick extends Thing implements Displayable, Moveable {
     cBall = c;
     cVect = new PVector(x - cBall.x, y - cBall.y);
     firing = false;
-    vel = 0;
     stopped = true;
   }
   void move() {
@@ -42,6 +40,7 @@ class Stick extends Thing implements Displayable, Moveable {
       } else if (dist(mouseX, mouseY, cBall.x, cBall.y) < dist(pmouseX, pmouseY, cBall.x, cBall.y)){
         if (vel > 0) vel -= 5;
       }
+        else if (vel < 0) vel = 0;
     }
   }
   
