@@ -8,6 +8,7 @@ ArrayList<Ball> removedStripe;
 int turn;
 float vel;
 boolean gaming;
+boolean redo = false;
 static float fU = 1 + 8 * pow(10, -3);
 
 void setup() {
@@ -141,6 +142,12 @@ void setup() {
 }
 
 void draw() {
+  keyPressed();
+  if (redo) {
+    setup();
+    redo = false;
+    gaming = true;
+  }
   if (gaming) {
 
     background(255);
@@ -191,4 +198,11 @@ void draw() {
     textSize(100);
     text("GAME OVER", 175, 300);
   }
+}
+
+void keyPressed(){
+   if (key == ENTER && !gaming){
+     gaming = true;
+     redo = true;
+   }
 }
