@@ -1,5 +1,6 @@
 class CueBall extends Ball {
   boolean inHole = false;
+  boolean valid = true;
   CueBall(float x, float y, float xv, float yv, int num) {
     super(x, y, xv, yv, num);
   }
@@ -7,13 +8,20 @@ class CueBall extends Ball {
     if (inHole){
       float xCor = mouseX;
       float yCor = mouseY;
-      boolean valid = true;
+      valid = true;
+      if (xCor < 50|| xCor > 825 || yCor < 175 || yCor > 520){
+        valid = false;
+      }
       for (Wall w: Walls){
         if (w.isTouching(xCor, yCor)){
           valid = false;
         }
       }
-      
+      for (Hole h : hole){
+        if (h.isTouching(xCor, yCor)){
+          valid = false;
+        }
+      }
       if (valid){
         fill(255, 255, 255);
         ellipse(xCor, yCor, 20, 20);
@@ -33,7 +41,7 @@ class CueBall extends Ball {
         //Displayables.remove(this);
         Moveables.remove(this);
         inHole = true;
-        if (mousePressed){
+        if (mousePressed && valid){
           setX(xCor);
           setY(yCor);
           xv = 0;

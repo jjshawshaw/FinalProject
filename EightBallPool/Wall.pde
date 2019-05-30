@@ -31,16 +31,6 @@ class Wall extends Thing implements Displayable {
       }
     }
   }
-  void display(String file) {
-    fill(255);
-    if (dir == 0) {
-      rect(x, y, len, 30);
-      ellipse(x, y, 10, 10);
-    } else {
-      ellipse(x, y, 10, 10);
-      rect(x, y, 30, len);
-    }
-  }
   boolean isTouching(Ball other) {
     if (dir == 0) {
       if ((x > other.x && x - other.x <= 10 || x < other.x &&  other.x - x <= len) 
