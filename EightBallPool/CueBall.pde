@@ -9,7 +9,7 @@ class CueBall extends Ball {
       float xCor = mouseX;
       float yCor = mouseY;
       valid = true;
-      if (xCor < 50|| xCor > 825 || yCor < 175 || yCor > 520){
+      if (xCor < 50|| xCor > 815 || yCor < 175 || yCor > 51110){
         valid = false;
       }
       for (Wall w: Walls){
