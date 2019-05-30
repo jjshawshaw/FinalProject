@@ -22,6 +22,11 @@ class CueBall extends Ball {
           valid = false;
         }
       }
+      for (Ball b: Balls){
+        if (b.isTouching(xCor, yCor)){
+          valid = false;
+        }
+      }
       if (valid){
         fill(255, 255, 255);
         ellipse(xCor, yCor, 20, 20);
