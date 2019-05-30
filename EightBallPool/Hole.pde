@@ -6,4 +6,7 @@ class Hole extends Thing {
   boolean isTouching(Ball other) {
     return (dist(x, y, other.x, other.y) <= 30);
   }
+  boolean isTouching(float xCor, float yCor) {
+    return (dist(x, y, xCor, yCor) <= 30);
+  }
 }

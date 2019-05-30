@@ -13,6 +13,7 @@ class CueBall extends Ball {
           valid = false;
         }
       }
+      
       if (valid){
         fill(255, 255, 255);
         ellipse(xCor, yCor, 20, 20);
