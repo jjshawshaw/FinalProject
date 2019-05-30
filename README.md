@@ -5,6 +5,7 @@ An 8Ball Pool game coded in Processing.
 Devlog
 ------
 Justin:
+
 5/17/19- Created initial class structure with simple display methods
 
 5/20/19- Gave balls the ability to move and collide
