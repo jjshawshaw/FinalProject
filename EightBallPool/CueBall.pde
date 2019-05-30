@@ -6,4 +6,7 @@ class CueBall extends Ball {
     fill(255, 255, 255);
     ellipse(x, y, 20, 20);
   }
+  boolean isTouching(Prediction other) {
+    return false;
+  }
 }

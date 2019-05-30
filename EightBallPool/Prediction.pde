@@ -16,14 +16,27 @@ class Prediction extends Thing implements Displayable {
         x -= s.cVect.x/100;
         y -= s.cVect.y/100;
         for (Wall w : Walls) {
-          if (w.isTouching(this)) collided = true;
+          if (w.isTouching(this)) { 
+            collided = true;
+            stroke(0);
+            line(cBall.x, cBall.y, x, y);
+          }
         }
         for (Hole h : hole) {
-          if (h.isTouching(this)) collided = true;
+          if (h.isTouching(this)) { 
+            collided = true;
+            stroke(0);
+            line(cBall.x, cBall.y, x, y);
+          }
+        }
+        for (Ball b : Balls) {
+          if (b.isTouching(this)) {
+            collided = true;
+            stroke(0);
+            line(cBall.x, cBall.y, x, y);
+          }
         }
       }
-      stroke(0);
-      line(cBall.x, cBall.y, x, y);
     }
   }
 }
