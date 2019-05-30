@@ -45,7 +45,12 @@ class Stick extends Thing implements Displayable, Moveable {
   void display() {
     fill(0);
     text("cue velocity: " + vel, 50, 50);
-    text("Turn: " + turn, 50, 40);
+    if (turn%2 == 1){
+      text("Player 1's turn", 50, 40);
+    }
+    if (turn%2 == 0){
+      text("Player 2's turn", 50, 40);
+    }
     if (stopped) {
       pushMatrix();
       translate(cBall.x, cBall.y);
