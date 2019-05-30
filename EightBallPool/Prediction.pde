@@ -19,21 +19,36 @@ class Prediction extends Thing implements Displayable {
           if (w.isTouching(this)) { 
             collided = true;
             stroke(0);
+            strokeWeight(4);
             line(cBall.x, cBall.y, x, y);
+            stroke(255);
+            strokeWeight(3);
+            line(cBall.x, cBall.y, x, y);
+            strokeWeight(1);
           }
         }
         for (Hole h : hole) {
           if (h.isTouching(this)) { 
             collided = true;
             stroke(0);
+            strokeWeight(4);
             line(cBall.x, cBall.y, x, y);
+            stroke(255);
+            strokeWeight(3);
+            line(cBall.x, cBall.y, x, y);
+            strokeWeight(1);
           }
         }
         for (Ball b : Balls) {
           if (b.isTouching(this)) {
             collided = true;
             stroke(0);
+            strokeWeight(4);
             line(cBall.x, cBall.y, x, y);
+            stroke(255);
+            strokeWeight(3);
+            line(cBall.x, cBall.y, x, y);
+            strokeWeight(1);
           }
         }
       }
