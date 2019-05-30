@@ -44,6 +44,7 @@ class Stick extends Thing implements Displayable, Moveable {
 
   void display() {
     fill(0);
+    text("Press ENTER to reset the game", 50, 30);
     text("cue velocity: " + vel, 50, 50);
     if (turn%2 == 1){
       text("Player 1's turn", 50, 40);

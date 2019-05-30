@@ -201,7 +201,7 @@ void draw() {
 }
 
 void keyPressed(){
-   if (key == ENTER){
+   if (key == ENTER && !gaming){
      gaming = true;
      redo = true;
    }
