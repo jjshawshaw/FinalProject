@@ -10,11 +10,16 @@ class Prediction extends Thing implements Displayable {
   void display() {
     if (s.firing) {
       boolean collided = false;
+      x = cBall.x;
+      y = cBall.y;
       while (!collided) {
-        x -= s.cVect.x;
-        y -= s.cVect.y;
+        x -= s.cVect.x/100;
+        y -= s.cVect.y/100;
         for (Wall w : Walls) {
           if (w.isTouching(this)) collided = true;
+        }
+        for (Hole h : hole) {
+          if (h.isTouching(this)) collided = true;
         }
       }
       stroke(0);
