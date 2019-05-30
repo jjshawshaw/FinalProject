@@ -101,9 +101,11 @@ class Ball extends Thing implements Displayable, Moveable {
           }
           removedSolid.add(this);
           setX(20 + id*30);
+          turn--;
         } else {
           removedStripe.add(this);
           setX(300 + id*30);
+          turn--;
         }
         setY(80);
       }
