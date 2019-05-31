@@ -147,6 +147,7 @@ void draw() {
 
     background(255);
     fill(100, 150, 100);
+    stroke(0);
     rect(50, 150, 805, 400);
 
     for (Wall w : Walls) {

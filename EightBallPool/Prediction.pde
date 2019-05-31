@@ -8,7 +8,11 @@ class Prediction extends Thing implements Displayable {
     y = cBall.y;
   }
   void display() {
-    //if (s.firing) {
+    boolean stopped = true;
+    for (Ball b : Balls) {
+      if (b.xv != 0 || b.yv != 0) stopped = false;
+    }
+    if (stopped) {
       boolean collided = false;
       x = cBall.x;
       y = cBall.y;
@@ -61,13 +65,17 @@ class Prediction extends Thing implements Displayable {
             noFill();
             ellipse(x, y, 20, 20);
             strokeWeight(1);
-            float xv = -(s.cVect.x) * vel;
-            float yv = -(s.cVect.y) * vel;
+            float xv = -(s.cVect.x);
+            float yv = -(s.cVect.y);
             PVector un = new PVector(b.x - x, b.y - y);
             un.normalize();
             PVector ut = new PVector(-un.y, un.x);
             PVector v1 = new PVector(xv, yv);
             PVector v2 = new PVector(b.xv, b.yv);
+            v1.normalize();
+            v1.mult(40);
+            v2.normalize();
+            v2.mult(40);
             float v1n = v1.dot(un);
             float v1t = v1.dot(ut);
             float v2n = v2.dot(un);
@@ -101,6 +109,6 @@ class Prediction extends Thing implements Displayable {
           }
         }
       }
-    //}
+    }
   }
 }
