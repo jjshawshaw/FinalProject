@@ -22,3 +22,4 @@ Justin:
 
 5/28/19- Created a cue velocity display, bug fixes
 
+5/31/19- Added collision prediction, aesthetic changes
