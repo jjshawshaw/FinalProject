@@ -16,7 +16,7 @@ class Stick extends Thing implements Displayable, Moveable {
   void move() {
     x = mouseX; 
     y = mouseY;
-    if (vel == 0.0) cVect = new PVector(cBall.x - x, cBall.y - y);
+    if (vel == 0.0 && !firing) cVect = new PVector(cBall.x - x, cBall.y - y);
     stopped = true;
     for (Ball b : Balls) {
       if (b.xv != 0 || b.yv != 0) stopped = false;
@@ -58,11 +58,11 @@ class Stick extends Thing implements Displayable, Moveable {
       translate(cBall.x, cBall.y);
       rotate(cVect.heading());
       fill(50, 0, 0);
-      rect(20, -3.5, 300, 7);
+      rect(20 + vel, -3.5, 300, 7);
       fill(255);
-      rect(20, -3.5, 7, 7);
+      rect(20 + vel, -3.5, 7, 7);
       fill(0);
-      rect(20, -3.5, 2.5, 7);
+      rect(20 + vel, -3.5, 2.5, 7);
       popMatrix();
     }
   }
