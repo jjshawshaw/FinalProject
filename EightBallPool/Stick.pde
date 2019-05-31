@@ -19,7 +19,7 @@ class Stick extends Thing implements Displayable, Moveable {
     if (vel == 0.0 && !firing) cVect = new PVector(cBall.x - x, cBall.y - y);
     stopped = true;
     for (Ball b : Balls) {
-      if (b.xv != 0 || b.yv != 0) stopped = false;
+      if (cBall.inHole || b.xv != 0 || b.yv != 0) stopped = false;
     }
     if (!firing && mousePressed && stopped) { 
       firing = true;
@@ -46,6 +46,8 @@ class Stick extends Thing implements Displayable, Moveable {
     strokeWeight(2);
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
+    text("Firing: " + firing, 50, 80);
+    text("InHole: " + cBall.inHole, 50, 90);
     text("cue velocity: " + vel, 50, 50);
     if (turn%2 == 1){
       text("Player 1's turn", 50, 40);
