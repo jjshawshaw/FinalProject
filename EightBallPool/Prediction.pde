@@ -19,11 +19,15 @@ class Prediction extends Thing implements Displayable {
           if (w.isTouching(this)) { 
             collided = true;
             stroke(0);
-            strokeWeight(4);
+            strokeWeight(5);
             line(cBall.x, cBall.y, x, y);
+            noFill();
+            ellipse(x, y, 20, 20);
             stroke(255);
             strokeWeight(3);
             line(cBall.x, cBall.y, x, y);
+            noFill();
+            ellipse(x, y, 20, 20);
             strokeWeight(1);
           }
         }
@@ -31,11 +35,15 @@ class Prediction extends Thing implements Displayable {
           if (h.isTouching(this)) { 
             collided = true;
             stroke(0);
-            strokeWeight(4);
+            strokeWeight(5);
             line(cBall.x, cBall.y, x, y);
+            noFill();
+            ellipse(x, y, 20, 20);
             stroke(255);
             strokeWeight(3);
             line(cBall.x, cBall.y, x, y);
+            noFill();
+            ellipse(x, y, 20, 20);
             strokeWeight(1);
           }
         }
@@ -43,11 +51,49 @@ class Prediction extends Thing implements Displayable {
           if (b.isTouching(this)) {
             collided = true;
             stroke(0);
-            strokeWeight(4);
+            strokeWeight(5);
             line(cBall.x, cBall.y, x, y);
+            noFill();
+            ellipse(x, y, 20, 20);
             stroke(255);
             strokeWeight(3);
             line(cBall.x, cBall.y, x, y);
+            noFill();
+            ellipse(x, y, 20, 20);
+            strokeWeight(1);
+            float xv = -(s.cVect.x) * vel;
+            float yv = -(s.cVect.y) * vel;
+            PVector un = new PVector(b.x - x, b.y - y);
+            un.normalize();
+            PVector ut = new PVector(-un.y, un.x);
+            PVector v1 = new PVector(xv, yv);
+            PVector v2 = new PVector(b.xv, b.yv);
+            float v1n = v1.dot(un);
+            float v1t = v1.dot(ut);
+            float v2n = v2.dot(un);
+            float v2t = v2.dot(ut);
+            PVector v1np = new PVector(un.x, un.y);
+            v1np.mult(v2n);
+            PVector v1tp = new PVector(ut.x, ut.y);
+            v1tp.mult(v1t);
+            PVector v2np = new PVector(un.x, un.y);
+            v2np.mult(v1n);
+            PVector v2tp = new PVector(ut.x, ut.y);
+            v2tp.mult(v2t);
+            v1np.add(v1tp);
+            v2np.add(v2tp);
+            stroke(0);
+            strokeWeight(5);
+            line(x, y, x + v1np.x, y + v1np.y);
+            line(b.x, b.y, b.x + v2np.x, b.y + v2np.y);
+            noFill();
+            ellipse(x, y, 20, 20);
+            stroke(255);
+            strokeWeight(3);
+            
+            line(x, y, x + (v1np.x), y + v1np.y);
+            line(b.x, b.y, b.x + v2np.x, b.y + v2np.y);
+            ellipse(x, y, 20, 20);
             strokeWeight(1);
           }
         }
