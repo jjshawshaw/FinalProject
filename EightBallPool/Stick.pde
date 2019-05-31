@@ -9,14 +9,14 @@ class Stick extends Thing implements Displayable, Moveable {
     y = height / 2;
     this.dir = 0;
     cBall = c;
-    cVect = new PVector(x - cBall.x, y - cBall.y);
+    cVect = new PVector(cBall.x - x, cBall.y - y);
     firing = false;
     stopped = true;
   }
   void move() {
     x = mouseX; 
     y = mouseY;
-    if (vel == 0.0) cVect = new PVector(x - cBall.x, y - cBall.y);
+    if (vel == 0.0) cVect = new PVector(cBall.x - x, cBall.y - y);
     stopped = true;
     for (Ball b : Balls) {
       if (b.xv != 0 || b.yv != 0) stopped = false;
