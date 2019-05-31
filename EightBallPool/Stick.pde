@@ -16,7 +16,7 @@ class Stick extends Thing implements Displayable, Moveable {
   void move() {
     x = mouseX; 
     y = mouseY;
-    cVect = new PVector(x - cBall.x, y - cBall.y);
+    if (vel == 0.0) cVect = new PVector(x - cBall.x, y - cBall.y);
     stopped = true;
     for (Ball b : Balls) {
       if (b.xv != 0 || b.yv != 0) stopped = false;
@@ -43,6 +43,7 @@ class Stick extends Thing implements Displayable, Moveable {
 
 
   void display() {
+    strokeWeight(2);
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
     text("cue velocity: " + vel, 50, 50);
@@ -62,12 +63,6 @@ class Stick extends Thing implements Displayable, Moveable {
       rect(20, -3.5, 7, 7);
       fill(0);
       rect(20, -3.5, 2.5, 7);
-      popMatrix();
-      pushMatrix();
-      translate(cBall.x, cBall.y);
-      rotate(cVect.heading());
-      fill(255);
-      rect(0, -1.5, -300, 3);
       popMatrix();
     }
   }

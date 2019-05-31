@@ -51,6 +51,7 @@ class Ball extends Thing implements Displayable, Moveable {
     }
   }
   void display() {
+    strokeWeight(2);
     fill(a, b, c);
     stroke(0);
     ellipse(x, y, 20, 20);
@@ -88,6 +89,9 @@ class Ball extends Thing implements Displayable, Moveable {
   }
   boolean isTouching(float xCor, float yCor) {
     return (dist(x, y, xCor, yCor) <= 20.5);
+  }
+  boolean isTouching(Prediction other) {
+    return (dist(x, y, other.x, other.y) <= 20);
   }
   void collide() {
     for (Hole h : hole) {

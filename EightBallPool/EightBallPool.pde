@@ -140,6 +140,8 @@ void setup() {
   Stick s = new Stick(c);
   Moveables.add(s);
   Displayables.add(s);
+  Prediction p = new Prediction(s);
+  Displayables.add(p);
 }
 
 void draw() {
@@ -152,12 +154,15 @@ void draw() {
   if (gaming) {
 
     background(255);
+    strokeWeight(2);
     fill(100, 150, 100);
+    stroke(0);
     rect(50, 150, 805, 400);
 
     for (Wall w : Walls) {
       w.display();
     }
+    strokeWeight(2);
 
     // display pockets
     fill(100, 150, 100);

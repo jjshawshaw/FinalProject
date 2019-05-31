@@ -10,6 +10,7 @@ class Wall extends Thing implements Displayable {
     this.dir2 = dir2;
   }
   void display() {
+    strokeWeight(2);
     fill(50);
     if (dir == 0) {
       stroke(0);
@@ -31,7 +32,7 @@ class Wall extends Thing implements Displayable {
       }
     }
   }
-  boolean isTouching(Ball other) {
+  boolean isTouching(Thing other) {
     if (dir == 0) {
       if ((x > other.x && x - other.x <= 10 || x < other.x &&  other.x - x <= len) 
         && (y > other.y && y - other.y <= 10 || y < other.y && other.y - y <= 40)) {

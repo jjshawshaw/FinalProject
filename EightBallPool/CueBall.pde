@@ -5,6 +5,7 @@ class CueBall extends Ball {
     super(x, y, xv, yv, num);
   }
   void display() {
+    strokeWeight(2);
     if (inHole){
       float xCor = mouseX;
       float yCor = mouseY;
@@ -105,10 +106,7 @@ class CueBall extends Ball {
     }
   }
   
-  
-  
-  void mouseReleased() {
-    setX(mouseX);
-    setY(mouseY);
+  boolean isTouching(Prediction other) {
+    return false;
   }
 }
