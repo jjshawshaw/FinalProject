@@ -59,8 +59,8 @@ class Ball extends Thing implements Displayable, Moveable {
     ellipse(x, y, 10, 10);
     if (id > 8) {
       fill(255);
-      arc(x, y, 18, 18, 0, PI/2, CHORD);
-      arc(x, y, 18, 18, PI, 1.5 * PI, CHORD);
+      arc(x, y, 17, 17, 0, PI/2, CHORD);
+      arc(x, y, 16, 16, PI, 1.5 * PI, CHORD);
     }
     fill(0, 0, 0);
     stroke(0, 0, 0);

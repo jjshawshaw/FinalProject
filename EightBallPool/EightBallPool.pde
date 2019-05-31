@@ -12,6 +12,7 @@ boolean redo = false;
 static float fU = 1 + 8 * pow(10, -3);
 
 void setup() {
+  strokeWeight(2);
   gaming = true;
   size(900, 600);
   background(255);
@@ -161,11 +162,11 @@ void draw() {
     // display pockets
     fill(100, 150, 100);
     stroke(0);
-    rect(437.5, 150, 30, 30);
-    rect(437.5, 520, 30, 30);
+    rect(437, 150, 30, 30);
+    rect(437, 520, 30, 30);
     noStroke();
-    rect(437.5, 150, 30, 31);
-    rect(437.5, 520, 30, 31);
+    rect(438, 152, 28, 30);
+    rect(438, 518, 28, 30);
     stroke(0);
     fill(0);
     ellipse(65, 165, 30, 30);
@@ -175,11 +176,13 @@ void draw() {
     ellipse(839, 165, 30, 30);
     ellipse(839, 534, 30, 30);
     //display velocity 
-    rect(49, 99, 102, 27);
+    rect(48, 98, 104, 29);
     for (int i = 1; i <= 255; i++) {
+      strokeWeight(1);
       stroke(255, i, 0);
       line(50 + (i * 100.0 / 255), 100, 50 + (i * 100.0 / 255), 125);
     }
+    strokeWeight(2);
     fill(255);
     stroke(0);
     rect(50 + (vel / 50 * 95), 100, 5, 25);
