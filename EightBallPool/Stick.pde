@@ -16,7 +16,7 @@ class Stick extends Thing implements Displayable, Moveable {
   void move() {
     x = mouseX; 
     y = mouseY;
-    cVect = new PVector(x - cBall.x, y - cBall.y);
+    if (vel == 0.0) cVect = new PVector(x - cBall.x, y - cBall.y);
     stopped = true;
     for (Ball b : Balls) {
       if (b.xv != 0 || b.yv != 0) stopped = false;

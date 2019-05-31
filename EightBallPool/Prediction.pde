@@ -8,7 +8,7 @@ class Prediction extends Thing implements Displayable {
     y = cBall.y;
   }
   void display() {
-    if (s.firing) {
+    //if (s.firing) {
       boolean collided = false;
       x = cBall.x;
       y = cBall.y;
@@ -82,22 +82,25 @@ class Prediction extends Thing implements Displayable {
             v2tp.mult(v2t);
             v1np.add(v1tp);
             v2np.add(v2tp);
+            float x1 = v1np.x;
+            float y1 = v1np.y;
+            float x2 = v2np.x;
+            float y2 = v2np.y;
             stroke(0);
             strokeWeight(5);
-            line(x, y, x + v1np.x, y + v1np.y);
-            line(b.x, b.y, b.x + v2np.x, b.y + v2np.y);
+            line(x, y, x + x1, y + y1);
+            line(b.x, b.y, b.x + x2, b.y + y2);
             noFill();
             ellipse(x, y, 20, 20);
             stroke(255);
             strokeWeight(3);
-            
-            line(x, y, x + (v1np.x), y + v1np.y);
-            line(b.x, b.y, b.x + v2np.x, b.y + v2np.y);
+            line(x, y, x + x1, y + y1);
+            line(b.x, b.y, b.x + x2, b.y + y2);
             ellipse(x, y, 20, 20);
             strokeWeight(1);
           }
         }
       }
-    }
+    //}
   }
 }
