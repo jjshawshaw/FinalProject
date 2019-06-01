@@ -34,7 +34,7 @@ class Stick extends Thing implements Displayable, Moveable {
       vel = 0;
     } else if (firing && mousePressed) {
       if (dist(mouseX, mouseY, cBall.x, cBall.y) > dist(pmouseX, pmouseY, cBall.x, cBall.y)) {
-        if (vel < 50) vel += .5;
+        if (vel < 30) vel += .5;
       } else if (dist(mouseX, mouseY, cBall.x, cBall.y) < dist(pmouseX, pmouseY, cBall.x, cBall.y)) {
         if (vel > 0) vel -= .5;
       }

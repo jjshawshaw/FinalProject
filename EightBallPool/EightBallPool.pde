@@ -181,16 +181,16 @@ void draw() {
     ellipse(839, 165, 30, 30);
     ellipse(839, 534, 30, 30);
     //display velocity 
-    rect(48, 98, 104, 29);
+    rect(48, 98, 204, 29);
     for (int i = 1; i <= 255; i++) {
       strokeWeight(1);
       stroke(255, i, 0);
-      line(50 + (i * 100.0 / 255), 100, 50 + (i * 100.0 / 255), 125);
+      line(50 + (i * 200.0 / 255), 100, 50 + (i * 200.0 / 255), 125);
     }
     strokeWeight(2);
     fill(255);
     stroke(0);
-    rect(50 + (vel / 50 * 95), 100, 5, 25);
+    rect(50 + (vel / 30 * 195), 100, 5, 25);
 
     for (Displayable d : Displayables) {
       d.display();
