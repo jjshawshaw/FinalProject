@@ -10,7 +10,7 @@ class Prediction extends Thing implements Displayable {
   void display() {
     boolean stopped = true;
     for (Ball b : Balls) {
-      if (b.xv != 0 || b.yv != 0) stopped = false;
+      if (cBall.inHole || b.xv != 0 || b.yv != 0) stopped = false;
     }
     if (stopped) {
       boolean collided = false;

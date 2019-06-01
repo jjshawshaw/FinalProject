@@ -9,6 +9,7 @@ int turn;
 float vel;
 boolean gaming;
 boolean redo = false;
+String finalText;
 static float fU = 1 + 8 * pow(10, -3);
 
 void setup() {
@@ -204,7 +205,7 @@ void draw() {
     }
   } else {
     textSize(100);
-    text("GAME OVER", 175, 300);
+    text(finalText, 175, 300);
   }
 }
 
