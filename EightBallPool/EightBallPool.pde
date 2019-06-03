@@ -14,7 +14,7 @@ boolean p1Stripes;
 static float fU = 1 + 8 * pow(10, -3);
 boolean started;
 
-void setup(){
+void setup() {
   started = false;
   size(900, 600);
 }
@@ -153,85 +153,98 @@ void gameSetup() {
 
 void draw() {
   if (started) {
-  keyPressed();
-  if (redo) {
-    setup();
-    redo = false;
-    gaming = true;
-  }
-  if (gaming) {
-
-    background(255);
-    strokeWeight(2);
-    fill(100, 150, 100);
-    stroke(0);
-    rect(50, 150, 805, 400);
-
-    for (Wall w : Walls) {
-      w.display();
+    keyPressed();
+    if (redo) {
+      setup();
+      redo = false;
+      gaming = true;
     }
-    strokeWeight(2);
+    if (gaming) {
 
-    // display pockets
-    fill(100, 150, 100);
-    stroke(0);
-    rect(437, 150, 30, 30);
-    rect(437, 520, 30, 30);
-    noStroke();
-    rect(438, 152, 28, 30);
-    rect(438, 518, 28, 30);
-    stroke(0);
-    fill(0);
-    ellipse(65, 165, 30, 30);
-    ellipse(65, 534, 30, 30);
-    ellipse(452.5, 165, 30, 30);
-    ellipse(452.5, 534, 30, 30);
-    ellipse(839, 165, 30, 30);
-    ellipse(839, 534, 30, 30);
-    //display velocity 
-    rect(48, 98, 204, 29);
-    for (int i = 1; i <= 255; i++) {
-      strokeWeight(1);
-      stroke(255, i, 0);
-      line(50 + (i * 200.0 / 255), 100, 50 + (i * 200.0 / 255), 125);
-    }
-    strokeWeight(2);
-    fill(255);
-    stroke(0);
-    rect(50 + (vel / 20 * 195), 100, 5, 25);
+      background(255);
+      strokeWeight(2);
+      fill(100, 150, 100);
+      stroke(0);
+      rect(50, 150, 805, 400);
 
-    for (Displayable d : Displayables) {
-      d.display();
-    }
-    for (int i = Balls.size()-1; i >= 0; i--) {
-      Balls.get(i).collide();
-    }
-    for (Moveable m : Moveables) {
-      m.move();
-    }
+      for (Wall w : Walls) {
+        w.display();
+      }
+      strokeWeight(2);
+
+      // display pockets
+      fill(100, 150, 100);
+      stroke(0);
+      rect(437, 150, 30, 30);
+      rect(437, 520, 30, 30);
+      noStroke();
+      rect(438, 152, 28, 30);
+      rect(438, 518, 28, 30);
+      stroke(0);
+      fill(0);
+      ellipse(65, 165, 30, 30);
+      ellipse(65, 534, 30, 30);
+      ellipse(452.5, 165, 30, 30);
+      ellipse(452.5, 534, 30, 30);
+      ellipse(839, 165, 30, 30);
+      ellipse(839, 534, 30, 30);
+      //display velocity 
+      rect(48, 98, 204, 29);
+      for (int i = 1; i <= 255; i++) {
+        strokeWeight(1);
+        stroke(255, i, 0);
+        line(50 + (i * 200.0 / 255), 100, 50 + (i * 200.0 / 255), 125);
+      }
+      strokeWeight(2);
+      fill(255);
+      stroke(0);
+      rect(50 + (vel / 20 * 195), 100, 5, 25);
+
+      for (Displayable d : Displayables) {
+        d.display();
+      }
+      for (int i = Balls.size()-1; i >= 0; i--) {
+        Balls.get(i).collide();
+      }
+      for (Moveable m : Moveables) {
+        m.move();
+      }
 
 
-    for (Ball b : Balls) {
-      b.xv /= fU;
-      b.yv /= fU;
-      if (abs(b.xv) < 0.1) b.xv = 0;
-      if (abs(b.yv) < 0.1) b.yv = 0;
+      for (Ball b : Balls) {
+        b.xv /= fU;
+        b.yv /= fU;
+        if (abs(b.xv) < 0.1) b.xv = 0;
+        if (abs(b.yv) < 0.1) b.yv = 0;
+      }
+    } else {
+      textSize(100);
+      text(finalText, 175, 300);
     }
-  } else {
-    textSize(100);
-    text(finalText, 175, 300);
-  }
   } else {
     background(0);
-    gameSetup();
+    strokeWeight(5);
     for (int i = 1; i <= 255; i++) {
-      strokeWeight(5);
       stroke(255, i, 0);
       line((i * width / 255), 0, (i * width / 255), height);
     }
-    //started = true; 
+    stroke(255);
+    fill(0);
+    rect(190, 125, 625, 150);
+    ellipse(190, 200, 200, 200);
+    stroke(0);
+    fill(255);
+    ellipse(215, 195, 125, 125);
+    fill(0);
+    textSize(100);
+    text("8", 185, 230);
+    textFont(createFont("Rockwell-BoldItalic", 150));
+    fill(80, 145, 250);
+    text("POOL", 320, 255);
+
+    //gameSetup();
+    //started = true;
   }
-  
 }
 
 void keyPressed() {
