@@ -10,6 +10,7 @@ float vel;
 boolean gaming;
 boolean redo = false;
 String finalText;
+boolean p1Stripes;
 static float fU = 1 + 8 * pow(10, -3);
 
 void setup() {
@@ -23,6 +24,7 @@ void setup() {
   removedSolid = new ArrayList<Ball>();
   removedStripe = new ArrayList<Ball>();
   turn = 1;
+  p1Stripes = false;
 
   Ball b1 = new Ball(600, 350, 0, 0, 1);
   Displayables.add(b1);
@@ -191,7 +193,7 @@ void draw() {
     strokeWeight(2);
     fill(255);
     stroke(0);
-    rect(50 + (vel / 30 * 195), 100, 5, 25);
+    rect(50 + (vel / 20 * 195), 100, 5, 25);
 
     for (Displayable d : Displayables) {
       d.display();

@@ -88,6 +88,11 @@ class Ball extends Thing implements Displayable, Moveable {
           break;
         }
       }
+      for (Hole h : hole) {
+        if (h.isTouching(this)) {
+          break;
+        }
+      }
       x += xv/100;
       y += yv/100;
     }
@@ -97,6 +102,11 @@ class Ball extends Thing implements Displayable, Moveable {
     for (int i = 0; i < 100; i++) {
       for (Ball b : Balls) { 
         if (b != this && b != other && b.isTouching(this)) { 
+          break;
+        }
+      }
+      for (Hole h : hole) {
+        if (h.isTouching(this)) {
           break;
         }
       }
