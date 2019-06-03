@@ -77,13 +77,39 @@ class Ball extends Thing implements Displayable, Moveable {
     text(file, x-4, y+5);
   }
   void move() {
-    x += xv;
-    y += yv; 
-    xv /= fU;
-    yv /= fU;
-    if (abs(xv) < 0.1) xv = 0;
-    if (abs(yv) < 0.1) yv = 0;
+    for (int i = 0; i < 100; i++) {
+      for (Ball b : Balls) { 
+        if (b != this && b.isTouching(this)) { 
+          break;
+        }
+      }
+      for (Wall w : Walls) { 
+        if (w.isTouching(this)) { 
+          break;
+        }
+      }
+      x += xv/100;
+      y += yv/100;
+    }
   }
+  
+  void moveAway(Ball other){
+    for (int i = 0; i < 100; i++) {
+      for (Ball b : Balls) { 
+        if (b != this && b != other && b.isTouching(this)) { 
+          break;
+        }
+      }
+      for (Wall w : Walls) { 
+        if (w.isTouching(this)) { 
+          break;
+        }
+      }
+      x += xv/100;
+      y += yv/100;
+    }
+  }
+  
   boolean isTouching(Ball other) {
     return (dist(x, y, other.x, other.y) <= 20.5);
   }
@@ -103,25 +129,21 @@ class Ball extends Thing implements Displayable, Moveable {
         int solidN = removedSolid.size();
         if (this.id <= 8) {
           if (this.id == 8) {
-            if (solidN < 7 && stripeN < 7){
+            if (solidN < 7 && stripeN < 7) {
               gaming = false;
               finalText = "8 Ball in,\nGAME OVER";
-            }
-            else if (stripeN == 7 && solidN < 7){
+            } else if (stripeN == 7 && solidN < 7) {
               gaming = false;
               finalText = "8 Ball in,\nPlayer 2 WIN!!!";
-            }
-            else if (stripeN == 7 && solidN == 7){
-              if (turn % 2 == 1){
+            } else if (stripeN == 7 && solidN == 7) {
+              if (turn % 2 == 1) {
                 gaming = false;
                 finalText = "8 Ball in,\nPlayer 1 WIN!!!";
-              }
-              else{
+              } else {
                 gaming = false;
                 finalText = "8 Ball in,\nPlayer 2 WIN!!!";
               }
-            }
-            else if (stripeN < 7 && solidN == 7){
+            } else if (stripeN < 7 && solidN == 7) {
               gaming = false;
               finalText = "8 Ball in,\nPlayer 1 WIN!!!";
             }
@@ -178,8 +200,8 @@ class Ball extends Thing implements Displayable, Moveable {
         b.yv = v2np.y;
         for (int i = 0; i < 1000; i++) {
           if (isTouching(b)) {
-            move();
-            b.move();
+            moveAway(b);
+            b.moveAway(this);
           }
         }
       }

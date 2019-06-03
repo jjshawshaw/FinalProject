@@ -196,12 +196,19 @@ void draw() {
     for (Displayable d : Displayables) {
       d.display();
     }
+    for (int i = Balls.size()-1; i >= 0; i--) {
+      Balls.get(i).collide();
+    }
     for (Moveable m : Moveables) {
       m.move();
     }
 
-    for (int i = Balls.size()-1; i >= 0; i--) {
-      Balls.get(i).collide();
+
+    for (Ball b : Balls) {
+      b.xv /= fU;
+      b.yv /= fU;
+      if (abs(b.xv) < 0.1) b.xv = 0;
+      if (abs(b.yv) < 0.1) b.yv = 0;
     }
   } else {
     textSize(100);
@@ -209,9 +216,9 @@ void draw() {
   }
 }
 
-void keyPressed(){
-   if (key == ENTER && !gaming){
-     gaming = true;
-     redo = true;
-   }
+void keyPressed() {
+  if (key == ENTER && !gaming) {
+    gaming = true;
+    redo = true;
+  }
 }
