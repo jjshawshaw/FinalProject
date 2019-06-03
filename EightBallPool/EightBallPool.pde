@@ -12,12 +12,16 @@ boolean redo = false;
 String finalText;
 boolean p1Stripes;
 static float fU = 1 + 8 * pow(10, -3);
+boolean started;
 
-void setup() {
+void setup(){
+  started = false;
+  size(900, 600);
+}
+
+void gameSetup() {
   strokeWeight(2);
   gaming = true;
-  size(900, 600);
-  background(255);
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
@@ -148,6 +152,7 @@ void setup() {
 }
 
 void draw() {
+  if (started) {
   keyPressed();
   if (redo) {
     setup();
@@ -216,6 +221,17 @@ void draw() {
     textSize(100);
     text(finalText, 175, 300);
   }
+  } else {
+    background(0);
+    gameSetup();
+    for (int i = 1; i <= 255; i++) {
+      strokeWeight(5);
+      stroke(255, i, 0);
+      line((i * width / 255), 0, (i * width / 255), height);
+    }
+    //started = true; 
+  }
+  
 }
 
 void keyPressed() {
