@@ -146,12 +146,12 @@ class Ball extends Thing implements Displayable, Moveable {
               gaming = false;
               finalText = "8 Ball in,\nPlayer 2 WIN!!!";
             } else if (stripeN == 7 && solidN == 7) {
-              if (turn % 2 == 1) {
+              if (solids) {
                 gaming = false;
-                finalText = "8 Ball in,\nPlayer 1 WIN!!!";
+                finalText = "8 Ball in,\nSolids WIN!!!";
               } else {
                 gaming = false;
-                finalText = "8 Ball in,\nPlayer 2 WIN!!!";
+                finalText = "8 Ball in,\nStripes WIN!!!";
               }
             } else if (stripeN < 7 && solidN == 7) {
               gaming = false;
@@ -160,11 +160,13 @@ class Ball extends Thing implements Displayable, Moveable {
           }
           removedSolid.add(this);
           setX(20 + id*30);
-          turn--;
         } else {
+          if (!assigned){
+            assigned= true;
+            solids = (id < 8);
+          }
           removedStripe.add(this);
           setX(300 + id*30);
-          turn--;
         }
         setY(80);
       }

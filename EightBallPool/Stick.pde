@@ -21,6 +21,9 @@ class Stick extends Thing implements Displayable, Moveable {
     for (Ball b : Balls) {
       if (cBall.inHole || b.xv != 0 || b.yv != 0) stopped = false;
     }
+    if (stopped && nextturn) {
+      solids = !solids;
+    }
     if (!firing && mousePressed && stopped) { 
       firing = true;
     } else if (firing && !mousePressed) {
@@ -29,7 +32,7 @@ class Stick extends Thing implements Displayable, Moveable {
       cBall.xv = -(cVect.x) * vel;
       cBall.yv = -(cVect.y) * vel;
       if (vel != 0) {
-        turn++;
+        nextturn = true;
       }
       vel = 0;
     } else if (firing && mousePressed) {
@@ -47,11 +50,12 @@ class Stick extends Thing implements Displayable, Moveable {
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
     text("cue velocity: " + vel, 50, 50);
-    if (turn%2 == 1){
-      text("Player 1's turn", 50, 40);
-    }
-    if (turn%2 == 0){
-      text("Player 2's turn", 50, 40);
+    if (!assigned) {
+      text("No ball has been sunk", 50, 40);
+    } else if (solids) {
+      text("Solids's turn", 50, 40);
+    } else {
+      text("Stripes's turn", 50, 40);
     }
     if (stopped) {
       pushMatrix();

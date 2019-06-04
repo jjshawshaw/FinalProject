@@ -5,14 +5,15 @@ ArrayList<Ball> Balls;
 ArrayList<Hole> hole;
 ArrayList<Ball> removedSolid;
 ArrayList<Ball> removedStripe;
-int turn;
+boolean solids;
 float vel;
+boolean assigned;
 boolean gaming;
 boolean redo = false;
 String finalText;
-boolean p1Stripes;
 static float fU = 1 + 8 * pow(10, -3);
 boolean started;
+boolean nextturn;
 
 void setup() {
   started = false;
@@ -27,8 +28,7 @@ void gameSetup() {
   Balls = new ArrayList<Ball>();
   removedSolid = new ArrayList<Ball>();
   removedStripe = new ArrayList<Ball>();
-  turn = 1;
-  p1Stripes = false;
+  assigned = false;
 
   Ball b1 = new Ball(600, 350, 0, 0, 1);
   Displayables.add(b1);
@@ -149,6 +149,8 @@ void gameSetup() {
   Displayables.add(s);
   Prediction p = new Prediction(s);
   Displayables.add(p);
+  nextturn = false;
+  solids = true;
 }
 
 void draw() {
@@ -160,9 +162,11 @@ void draw() {
       gaming = true;
     }
     if (gaming) {
-
       background(255);
       strokeWeight(2);
+      fill(0);
+      text("solids?: " + solids, 10, 10);
+      text("assigned: " + assigned, 10, 20);
       fill(100, 150, 100);
       stroke(0);
       rect(50, 150, 805, 400);

@@ -13,13 +13,10 @@ class CueBall extends Ball {
       fill(255, 255, 255);
       ellipse(x, y, 20, 20);
     }
-    fill(0);
-    text("InHole: " + inHole, 50, 90);
   }
   void collide() {
     float xCor = mouseX;
     float yCor = mouseY;
-    text(x + ", " + y, 10, 10);
     for (Hole h : hole) {
       if (h.isTouching(this)) {
               x = 0;
