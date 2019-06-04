@@ -110,10 +110,11 @@ class Prediction extends Thing implements Displayable {
             } else {
               noFill();
               ellipse(x, y, 20, 20);
-              stroke(255, 0, 0);
+              stroke(255);
               strokeWeight(3);
               line(cBall.x, cBall.y, x, y);
               noFill();
+              stroke(255, 0, 0);
               ellipse(x, y, 20, 20);
               strokeWeight(1);
             }

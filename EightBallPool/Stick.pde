@@ -23,6 +23,7 @@ class Stick extends Thing implements Displayable, Moveable {
     }
     if (stopped && nextturn) {
       solids = !solids;
+      nextturn = false;
     }
     if (!firing && mousePressed && stopped) { 
       firing = true;
