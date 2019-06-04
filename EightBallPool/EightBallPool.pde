@@ -241,7 +241,13 @@ void draw() {
     textFont(createFont("Rockwell-BoldItalic", 150));
     fill(80, 145, 250);
     text("POOL", 320, 255);
-
+      if (mouseX >= 300 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500){
+        fill(100, 100, 250);
+      }
+    rect(300,400,300,100);
+    fill(0);
+    textSize(50);
+    text("PLAY", 380, 470);
     //gameSetup();
     //started = true;
   }
