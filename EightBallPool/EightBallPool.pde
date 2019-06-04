@@ -248,8 +248,10 @@ void draw() {
     fill(0);
     textSize(50);
     text("PLAY", 380, 470);
-    //gameSetup();
-    //started = true;
+    if (mouseX >= 300 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500 && mousePressed){
+      gameSetup();
+      started = true;
+    }
   }
 }
 
