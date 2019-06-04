@@ -67,11 +67,19 @@ class CueBall extends Ball {
         yv = v1np.y / 1.1;
         b.xv = v2np.x / 1.1;
         b.yv = v2np.y / 1.1;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
           if (isTouching(b)) {
             moveAway(b);
             b.moveAway(this);
           }
+        }
+        for (int i = 0; i < 100; i++) {
+        if (isTouching(b)) {
+          x += xv;
+          y += yv;
+          b.x += b.xv;
+          b.y += b.yv;
+        }
         }
       }
     }     

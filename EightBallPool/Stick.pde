@@ -4,6 +4,8 @@ class Stick extends Thing implements Displayable, Moveable {
   PVector cVect;
   boolean firing;
   boolean stopped;
+  int pSo;
+  int pSt;
   public Stick(CueBall c) {
     x = width / 2;
     y = height / 2;
@@ -12,6 +14,8 @@ class Stick extends Thing implements Displayable, Moveable {
     cVect = new PVector(cBall.x - x, cBall.y - y);
     firing = false;
     stopped = true;
+    pSo = 0;
+    pSt = 0;
   }
   void move() {
     x = mouseX; 
@@ -22,7 +26,11 @@ class Stick extends Thing implements Displayable, Moveable {
       if (cBall.inHole || b.xv != 0 || b.yv != 0) stopped = false;
     }
     if (stopped && nextturn) {
-      solids = !solids;
+      if (!(solids && removedSolid.size() - pSo > 0) || (!solids && removedStripe.size() - pSt > 0)) {
+        solids = !solids;
+      }
+      pSo = removedSolid.size();
+      pSt = removedStripe.size();
       nextturn = false;
     }
     if (!firing && mousePressed && stopped) { 

@@ -97,8 +97,8 @@ class Ball extends Thing implements Displayable, Moveable {
       y += yv/100;
     }
   }
-  
-  void moveAway(Ball other){
+
+  void moveAway(Ball other) {
     for (int i = 0; i < 100; i++) {
       for (Ball b : Balls) { 
         if (b != this && b != other && b.isTouching(this)) { 
@@ -119,7 +119,7 @@ class Ball extends Thing implements Displayable, Moveable {
       y += yv/100;
     }
   }
-  
+
   boolean isTouching(Ball other) {
     return (dist(x, y, other.x, other.y) <= 20.5);
   }
@@ -132,6 +132,10 @@ class Ball extends Thing implements Displayable, Moveable {
   void collide() {
     for (Hole h : hole) {
       if (h.isTouching(this)) {
+        if (!assigned) {
+          assigned= true;
+          solids = (id < 8);
+        }
         Balls.remove(this);
         //Displayables.remove(this);
         Moveables.remove(this);
@@ -161,10 +165,7 @@ class Ball extends Thing implements Displayable, Moveable {
           removedSolid.add(this);
           setX(20 + id*30);
         } else {
-          if (!assigned){
-            assigned= true;
-            solids = (id < 8);
-          }
+
           removedStripe.add(this);
           setX(300 + id*30);
         }
@@ -210,11 +211,19 @@ class Ball extends Thing implements Displayable, Moveable {
         yv = v1np.y;
         b.xv = v2np.x;
         b.yv = v2np.y;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
           if (isTouching(b)) {
             moveAway(b);
             b.moveAway(this);
           }
+        }
+        for (int i = 0; i < 100; i++) {
+        if (isTouching(b)) {
+          x += xv;
+          y += yv;
+          b.x += b.xv;
+          b.y += b.yv;
+        }
         }
       }
     }
