@@ -155,7 +155,6 @@ void draw() {
     gaming = true;
   }
   if (gaming) {
-
     background(255);
     strokeWeight(2);
     fill(100, 150, 100);
