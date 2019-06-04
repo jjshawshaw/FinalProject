@@ -87,10 +87,11 @@ class CueBall extends Ball {
     for (Ball b : Balls) {
       if (b.xv != 0 || b.yv != 0) stopped = false;
     }
-    if (inHole && stopped) {
+    if ((inHole || foul) && stopped) {
       x = 250;
       y = 350;
       inHole = false;
+      foul = false;
     }
   }
 

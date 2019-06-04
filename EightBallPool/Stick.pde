@@ -26,7 +26,7 @@ class Stick extends Thing implements Displayable, Moveable {
       if (cBall.inHole || b.xv != 0 || b.yv != 0) stopped = false;
     }
     if (stopped && nextturn) {
-      if (!(solids && removedSolid.size() - pSo > 0) || (!solids && removedStripe.size() - pSt > 0)) {
+      if (!((solids && removedSolid.size() - pSo > 0) || (!solids && removedStripe.size() - pSt > 0))) {
         solids = !solids;
       }
       pSo = removedSolid.size();
@@ -42,6 +42,7 @@ class Stick extends Thing implements Displayable, Moveable {
       cBall.yv = -(cVect.y) * vel;
       if (vel != 0) {
         nextturn = true;
+        hashit = false;
       }
       vel = 0;
     } else if (firing && mousePressed) {

@@ -14,6 +14,8 @@ String finalText;
 static float fU = 1 + 8 * pow(10, -3);
 boolean started;
 boolean nextturn;
+boolean hashit;
+boolean foul;
 
 void setup() {
   started = false;
@@ -23,6 +25,7 @@ void setup() {
 void gameSetup() {
   strokeWeight(2);
   gaming = true;
+  foul = false;
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();
@@ -151,6 +154,7 @@ void gameSetup() {
   Displayables.add(p);
   nextturn = false;
   solids = true;
+  hashit = false;
 }
 
 void draw() {
@@ -164,9 +168,6 @@ void draw() {
     if (gaming) {
       background(255);
       strokeWeight(2);
-      fill(0);
-      text("solids?: " + solids, 10, 10);
-      text("assigned: " + assigned, 10, 20);
       fill(100, 150, 100);
       stroke(0);
       rect(50, 150, 805, 400);
