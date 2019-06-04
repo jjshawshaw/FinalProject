@@ -34,7 +34,7 @@ class Stick extends Thing implements Displayable, Moveable {
       vel = 0;
     } else if (firing && mousePressed) {
       if (dist(mouseX, mouseY, cBall.x, cBall.y) > dist(pmouseX, pmouseY, cBall.x, cBall.y)) {
-        if (vel < 20) vel += .5;
+        if (vel < 30) vel += .5;
       } else if (dist(mouseX, mouseY, cBall.x, cBall.y) < dist(pmouseX, pmouseY, cBall.x, cBall.y)) {
         if (vel > 0) vel -= .5;
       }
@@ -46,8 +46,6 @@ class Stick extends Thing implements Displayable, Moveable {
     strokeWeight(2);
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
-    text("Firing: " + firing, 50, 80);
-    text("InHole: " + cBall.inHole, 50, 90);
     text("cue velocity: " + vel, 50, 50);
     if (turn%2 == 1){
       text("Player 1's turn", 50, 40);

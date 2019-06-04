@@ -1,67 +1,38 @@
 class CueBall extends Ball {
-  boolean inHole = false;
-  boolean valid = true;
+  boolean inHole;
+  boolean valid;
   CueBall(float x, float y, float xv, float yv, int num) {
     super(x, y, xv, yv, num);
+    valid = false;
+    inHole = false;
   }
   void display() {
     strokeWeight(2);
-    if (inHole){
-      float xCor = mouseX;
-      float yCor = mouseY;
-      valid = true;
-      for (Ball b : Balls) {
-      if (b != this && (b.xv != 0 || b.yv != 0)) valid = false;
-      }
-      if (xCor < 50|| xCor > 815 || yCor < 175 || yCor > 51110){
-        valid = false;
-      }
-      for (Wall w: Walls){
-        if (w.isTouching(xCor, yCor)){
-          valid = false;
-        }
-      }
-      for (Hole h : hole){
-        if (h.isTouching(xCor, yCor)){
-          valid = false;
-        }
-      }
-      for (Ball b: Balls){
-        if (b.isTouching(xCor, yCor)){
-          valid = false;
-        }
-      }
-      if (valid){
-        fill(255, 255, 255);
-        ellipse(xCor, yCor, 20, 20);
-      }
-    }
-    else{
+    valid = true;
+    if (!inHole){
       fill(255, 255, 255);
       ellipse(x, y, 20, 20);
     }
+    fill(0);
+    text("InHole: " + inHole, 50, 90);
   }
   void collide() {
     float xCor = mouseX;
     float yCor = mouseY;
+    text(x + ", " + y, 10, 10);
     for (Hole h : hole) {
       if (h.isTouching(this)) {
+              x = 0;
+            y = 0;
+            xv = 0;
+            yv = 0;
         //Balls.remove(this);
         //Displayables.remove(this);
-        Moveables.remove(this);
         inHole = true;
-        if (mousePressed && valid){
-          setX(xCor);
-          setY(yCor);
-          xv = 0;
-          yv = 0;
-          Moveables.add(this);
-          inHole = false;
-        }
       }
     }
     for (Wall w : Walls) {
-      if (w.isTouching(this)) {
+      if (w.isTouching(this) && !inHole) {
         if (w.dir == 0) {
           yv *= -1;
         } else {
@@ -101,14 +72,23 @@ class CueBall extends Ball {
         b.yv = v2np.y / 1.1;
         for (int i = 0; i < 1000; i++) {
           if (isTouching(b)) {
-            move();
-            b.move();
+            moveAway(b);
+            b.moveAway(this);
           }
         }
       }
+    }     
+    boolean stopped = true;
+    for (Ball b : Balls) {
+      if (b.xv != 0 || b.yv != 0) stopped = false;
+    }
+    if (inHole && stopped) {
+      x = 250;
+      y = 350;
+      inHole = false;
     }
   }
-  
+
   boolean isTouching(Prediction other) {
     return false;
   }

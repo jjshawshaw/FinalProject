@@ -198,7 +198,7 @@ void draw() {
       strokeWeight(2);
       fill(255);
       stroke(0);
-      rect(50 + (vel / 30 * 195), 100, 5, 25);
+      rect(50 + (vel / 20 * 195), 100, 5, 25);
 
       for (Displayable d : Displayables) {
         d.display();
