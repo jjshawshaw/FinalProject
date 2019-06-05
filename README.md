@@ -3,9 +3,14 @@
 A 2-Player 8Ball Pool game coded in Processing.
 
 Use the mouse to aim and click and drag to adjust velocity.
+
 To win, pot all of the balls of your type and then the eight ball.
+
 If you don't hit a ball of your type it is a foul.
+
 If you don't hit the 8 ball in last, you lose.
+
+Use a lower velocity for better accuracy.
 
 Devlog
 ------
