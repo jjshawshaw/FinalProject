@@ -112,4 +112,8 @@ class CueBall extends Ball {
   boolean isTouching(Prediction other) {
     return false;
   }
+  
+  boolean inHole(){
+    return inHole;
+  }
 }

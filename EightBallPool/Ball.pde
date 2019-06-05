@@ -141,7 +141,7 @@ class Ball extends Thing implements Displayable, Moveable {
           if (this.id == 8) {
             if (solidN < 7 && stripeN < 7) {
               gaming = false;
-              finalText = "8 Ball in,\nGAME OVER";
+              finalText = "8 Ball in,\nPress ENTER to replay";
             } else if (stripeN == 7 && solidN < 7) {
               gaming = false;
               finalText = "8 Ball in,\nPlayer 2 WIN!!!";

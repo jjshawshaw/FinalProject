@@ -46,14 +46,16 @@ class Stick extends Thing implements Displayable, Moveable {
     strokeWeight(2);
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
-    text("Firing: " + firing, 50, 80);
-    text("InHole: " + cBall.inHole, 50, 90);
+    text("Firing: " + firing, 300,110);
+    text("InHole: " + cBall.inHole, 300,120);
     text("cue velocity: " + vel, 50, 50);
     if (turn%2 == 1){
-      text("Player 1's turn", 50, 40);
+      textSize(50);
+      text("Player 1's turn",300, 60);
     }
     if (turn%2 == 0){
-      text("Player 2's turn", 50, 40);
+      textSize(50);
+      text("Player 2's turn",300, 60);
     }
     if (stopped) {
       pushMatrix();
@@ -67,5 +69,6 @@ class Stick extends Thing implements Displayable, Moveable {
       rect(20 + vel, -3.5, 2.5, 7);
       popMatrix();
     }
+  
   }
 }
