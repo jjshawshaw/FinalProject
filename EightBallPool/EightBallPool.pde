@@ -16,6 +16,7 @@ boolean started;
 boolean nextturn;
 boolean hashit;
 boolean foul;
+boolean foultext;
 
 void setup() {
   started = false;
@@ -26,6 +27,7 @@ void gameSetup() {
   strokeWeight(2);
   gaming = true;
   foul = false;
+  foultext = false;
   Displayables = new ArrayList<Displayable>();
   Moveables = new ArrayList<Moveable>();
   Balls = new ArrayList<Ball>();

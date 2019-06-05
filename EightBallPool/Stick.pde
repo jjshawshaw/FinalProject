@@ -43,6 +43,7 @@ class Stick extends Thing implements Displayable, Moveable {
       if (vel != 0) {
         nextturn = true;
         hashit = false;
+        foultext = false;
       }
       vel = 0;
     } else if (firing && mousePressed) {
@@ -59,7 +60,6 @@ class Stick extends Thing implements Displayable, Moveable {
     strokeWeight(2);
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
-    text("foul: " + foul, 50, 50);
     if (!assigned) {
       text("No ball has been sunk", 50, 40);
     } else if (solids) {
@@ -67,6 +67,7 @@ class Stick extends Thing implements Displayable, Moveable {
     } else {
       text("Stripes's turn", 50, 40);
     }
+    if (foultext) text("Foul!", 50, 50);
     if (stopped) {
       pushMatrix();
       translate(cBall.x, cBall.y);

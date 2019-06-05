@@ -96,6 +96,7 @@ class CueBall extends Ball {
       y = 350;
       inHole = false;
       foul = false;
+      foultext = true;
     }
   }
 
