@@ -23,3 +23,11 @@ Justin:
 5/28/19- Created a cue velocity display, bug fixes
 
 5/31/19- Added collision prediction, aesthetic changes
+
+3/1/19- Bug fixes
+
+3/2/19- Bug fixes
+
+3/3/19- Made a start screen
+
+3/4/19- Implemented solids and stripes, fouls, game over screen
