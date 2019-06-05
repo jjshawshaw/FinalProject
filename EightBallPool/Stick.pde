@@ -45,7 +45,7 @@ class Stick extends Thing implements Displayable, Moveable {
   void display() {
     strokeWeight(2);
     fill(0);
-    text("Press ENTER to reset the game", 50, 30);
+    //text("Press ENTER to reset the game", 50, 30);
     text("Firing: " + firing, 300,110);
     text("InHole: " + cBall.inHole, 300,120);
     text("cue velocity: " + vel, 50, 50);
