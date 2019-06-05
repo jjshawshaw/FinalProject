@@ -9,7 +9,7 @@ class CueBall extends Ball {
   void display() {
     strokeWeight(2);
     valid = true;
-    if (!inHole){
+    if (!inHole) {
       fill(255, 255, 255);
       ellipse(x, y, 20, 20);
     }
@@ -19,10 +19,10 @@ class CueBall extends Ball {
     float yCor = mouseY;
     for (Hole h : hole) {
       if (h.isTouching(this)) {
-              x = 0;
-            y = 0;
-            xv = 0;
-            yv = 0;
+        x = 0;
+        y = 0;
+        xv = 0;
+        yv = 0;
         //Balls.remove(this);
         //Displayables.remove(this);
         inHole = true;
@@ -44,6 +44,10 @@ class CueBall extends Ball {
     }
     for (Ball b : Balls) {
       if (b != this && b.isTouching(this)) {
+        if (!hashit) {
+          if (assigned && ((solids && b.id > 8) || (!solids && b.id < 8))) foul = true;
+          hashit = true;
+        }
         PVector un = new PVector(b.x - x, b.y - y);
         un.normalize();
         PVector ut = new PVector(-un.y, un.x);
@@ -74,12 +78,12 @@ class CueBall extends Ball {
           }
         }
         for (int i = 0; i < 100; i++) {
-        if (isTouching(b)) {
-          x += xv;
-          y += yv;
-          b.x += b.xv;
-          b.y += b.yv;
-        }
+          if (isTouching(b)) {
+            x += xv;
+            y += yv;
+            b.x += b.xv;
+            b.y += b.yv;
+          }
         }
       }
     }     
@@ -87,7 +91,7 @@ class CueBall extends Ball {
     for (Ball b : Balls) {
       if (b.xv != 0 || b.yv != 0) stopped = false;
     }
-    if ((inHole || foul) && stopped) {
+    if ((inHole || foul || !hashit) && stopped) {
       x = 250;
       y = 350;
       inHole = false;

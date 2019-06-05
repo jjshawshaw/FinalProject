@@ -188,10 +188,6 @@ class Ball extends Thing implements Displayable, Moveable {
     }
     for (Ball b : Balls) {
       if (b != this && b.isTouching(this)) {
-        if (!hashit){
-          if (assigned && ((solids && b.id > 8) || (!solids && b.id < 8))) foul = true;
-          hashit = true;
-        }
         PVector un = new PVector(b.x - x, b.y - y);
         un.normalize();
         PVector ut = new PVector(-un.y, un.x);

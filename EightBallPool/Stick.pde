@@ -59,7 +59,7 @@ class Stick extends Thing implements Displayable, Moveable {
     strokeWeight(2);
     fill(0);
     text("Press ENTER to reset the game", 50, 30);
-    text("cue velocity: " + vel, 50, 50);
+    text("foul: " + foul, 50, 50);
     if (!assigned) {
       text("No ball has been sunk", 50, 40);
     } else if (solids) {
