@@ -48,6 +48,7 @@ class CueBall extends Ball {
       if (h.isTouching(this)) {
         //Balls.remove(this);
         //Displayables.remove(this);
+        
         Moveables.remove(this);
         inHole = true;
         if (mousePressed && valid){
@@ -112,7 +113,6 @@ class CueBall extends Ball {
   boolean isTouching(Prediction other) {
     return false;
   }
-  
   boolean inHole(){
     return inHole;
   }
