@@ -143,25 +143,18 @@ class Ball extends Thing implements Displayable, Moveable {
         int solidN = removedSolid.size();
         if (this.id <= 8) {
           if (this.id == 8) {
-            if (solidN < 7 && stripeN < 7) {
-              gaming = false;
-              finalText = "8 Ball in,\nGAME OVER";
-            } else if (stripeN == 7 && solidN < 7) {
-              gaming = false;
-              finalText = "8 Ball in,\nPlayer 2 WIN!!!";
-            } else if (stripeN == 7 && solidN == 7) {
-              if (solids) {
-                gaming = false;
-                finalText = "8 Ball in,\nSolids WIN!!!";
-              } else {
-                gaming = false;
-                finalText = "8 Ball in,\nStripes WIN!!!";
-              }
-            } else if (stripeN < 7 && solidN == 7) {
-              gaming = false;
-              finalText = "8 Ball in,\nPlayer 1 WIN!!!";
-            }
+            over = true;
+            gaming = false;
+            if (solids) {
+              if (solidN == 7) finalText = "Solids Wins!";
+              else finalText = "Stripes Wins!";
+            } else {
+              if (stripeN == 7) finalText = "Stripes Wins!";
+              else finalText = "Solids Wins!";
+            } 
+            if (!assigned) finalText = "";
           }
+            
           removedSolid.add(this);
           setX(20 + id*30);
         } else {

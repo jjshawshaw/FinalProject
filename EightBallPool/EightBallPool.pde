@@ -17,14 +17,18 @@ boolean nextturn;
 boolean hashit;
 boolean foul;
 boolean foultext;
+boolean firstturn;
+boolean over;
 
 void setup() {
   started = false;
   size(900, 600);
+  over = false;
 }
 
 void gameSetup() {
   strokeWeight(2);
+  firstturn = true;
   gaming = true;
   foul = false;
   foultext = false;
@@ -161,72 +165,89 @@ void gameSetup() {
 
 void draw() {
   if (started) {
-    keyPressed();
-    if (redo) {
-      setup();
-      redo = false;
-      gaming = true;
-    }
-    if (gaming) {
-      background(255);
-      strokeWeight(2);
-      fill(100, 150, 100);
-      stroke(0);
-      rect(50, 150, 805, 400);
-
-      for (Wall w : Walls) {
-        w.display();
-      }
-      strokeWeight(2);
-
-      // display pockets
-      fill(100, 150, 100);
-      stroke(0);
-      rect(437, 150, 30, 30);
-      rect(437, 520, 30, 30);
-      noStroke();
-      rect(438, 152, 28, 30);
-      rect(438, 518, 28, 30);
-      stroke(0);
-      fill(0);
-      ellipse(65, 165, 30, 30);
-      ellipse(65, 534, 30, 30);
-      ellipse(452.5, 165, 30, 30);
-      ellipse(452.5, 534, 30, 30);
-      ellipse(839, 165, 30, 30);
-      ellipse(839, 534, 30, 30);
-      //display velocity 
-      rect(48, 98, 204, 29);
-      for (int i = 1; i <= 255; i++) {
-        strokeWeight(1);
-        stroke(255, i, 0);
-        line(50 + (i * 200.0 / 255), 100, 50 + (i * 200.0 / 255), 125);
-      }
-      strokeWeight(2);
+    if (over) {
+      background(0);
+      fill(50, 150, 50);
+      textFont(createFont("Rockwell-Bold", 100));
+      text("GAME OVER", 100, 200);
+      textSize(70);
+      text(finalText, 220, 300);
       fill(255);
-      stroke(0);
-      rect(50 + (vel / 30 * 195), 100, 5, 25);
-
-      for (Displayable d : Displayables) {
-        d.display();
+      textSize(50);
+      text("Press enter to restart", 190, 500);
+      fill(0);
+      for (int i = 0; i < width; i += 3){
+        line(i, 0, i, height);
       }
-      for (int i = Balls.size()-1; i >= 0; i--) {
-        Balls.get(i).collide();
-      }
-      for (Moveable m : Moveables) {
-        m.move();
-      }
-
-
-      for (Ball b : Balls) {
-        b.xv /= fU;
-        b.yv /= fU;
-        if (abs(b.xv) < 0.1) b.xv = 0;
-        if (abs(b.yv) < 0.1) b.yv = 0;
+      keyPressed();
+      if (redo) {
+        redo = false;
+        gaming = true;
+        over = false;
+        setup();
       }
     } else {
-      textSize(100);
-      text(finalText, 175, 300);
+      if (gaming) {
+        background(255);
+        strokeWeight(2);
+        fill(100, 150, 100);
+        stroke(0);
+        rect(50, 150, 805, 400);
+
+        for (Wall w : Walls) {
+          w.display();
+        }
+        strokeWeight(2);
+
+        // display pockets
+        fill(100, 150, 100);
+        stroke(0);
+        rect(437, 150, 30, 30);
+        rect(437, 520, 30, 30);
+        noStroke();
+        rect(438, 152, 28, 30);
+        rect(438, 518, 28, 30);
+        stroke(0);
+        fill(0);
+        ellipse(65, 165, 30, 30);
+        ellipse(65, 534, 30, 30);
+        ellipse(452.5, 165, 30, 30);
+        ellipse(452.5, 534, 30, 30);
+        ellipse(839, 165, 30, 30);
+        ellipse(839, 534, 30, 30);
+        //display velocity 
+        rect(48, 98, 204, 29);
+        for (int i = 1; i <= 255; i++) {
+          strokeWeight(1);
+          stroke(255, i, 0);
+          line(50 + (i * 200.0 / 255), 100, 50 + (i * 200.0 / 255), 125);
+        }
+        strokeWeight(2);
+        fill(255);
+        stroke(0);
+        rect(50 + (vel / 30 * 195), 100, 5, 25);
+
+        for (Displayable d : Displayables) {
+          d.display();
+        }
+        for (int i = Balls.size()-1; i >= 0; i--) {
+          Balls.get(i).collide();
+        }
+        for (Moveable m : Moveables) {
+          m.move();
+        }
+
+
+        for (Ball b : Balls) {
+          b.xv /= fU;
+          b.yv /= fU;
+          if (abs(b.xv) < 0.1) b.xv = 0;
+          if (abs(b.yv) < 0.1) b.yv = 0;
+        }
+      } else {
+        textSize(100);
+        text(finalText, 175, 300);
+      }
     }
   } else {
     background(0);
@@ -248,22 +269,23 @@ void draw() {
     textFont(createFont("Rockwell-BoldItalic", 150));
     fill(80, 145, 250);
     text("POOL", 320, 255);
-      if (mouseX >= 300 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500){
-        fill(100, 100, 250);
-      }
-    rect(300,400,300,100);
+    if (mouseX >= 300 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500) {
+      fill(100, 100, 250);
+    }
+    rect(300, 400, 300, 100);
     fill(0);
     textSize(50);
     text("PLAY", 380, 470);
-    if (mouseX >= 300 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500 && mousePressed){
+    if (mouseX >= 300 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500 && mousePressed) {
       gameSetup();
       started = true;
     }
   }
 }
 
+
 void keyPressed() {
-  if (key == ENTER && !gaming) {
+  if (key == ENTER && over) {
     gaming = true;
     redo = true;
   }
