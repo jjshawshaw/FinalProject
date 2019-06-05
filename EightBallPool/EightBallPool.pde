@@ -152,8 +152,7 @@ void gameSetup() {
   Hole h6 = new Hole(834, 529);
   hole.add(h6);
 
-  vel = 0;
-  Stick s = new Stick(c);
+  vel = 0;  Stick s = new Stick(c);
   Moveables.add(s);
   Displayables.add(s);
   Prediction p = new Prediction(s);

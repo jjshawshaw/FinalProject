@@ -60,6 +60,7 @@ class Stick extends Thing implements Displayable, Moveable {
   void display() {
     strokeWeight(2);
     fill(0);
+<<<<<<< HEAD
     textSize(20);
     if (!assigned) {
       text("No ball has been sunk", 50, 40);
@@ -81,5 +82,6 @@ class Stick extends Thing implements Displayable, Moveable {
       rect(20 + vel, -3.5, 2.5, 7);
       popMatrix();
     }
+  
   }
 }
